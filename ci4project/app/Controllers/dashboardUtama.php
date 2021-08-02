@@ -4,8 +4,8 @@ namespace App\Controllers;
 
 class dashboardUtama extends BaseController
 {
-    public function index()
+    public function dashboardutama()
     {
-        return view('starter.php');
+        return view('dashboardutama.php');
     }
 }
