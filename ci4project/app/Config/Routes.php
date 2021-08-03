@@ -38,6 +38,7 @@ $routes->get('/user/customer', 'UserController::userCustomer');
 $routes->get('/user/mekanik', 'UserController::userMekanik');
 $routes->get('/auth/login', 'Auth::login');
 $routes->get('/auth/register', 'Auth::register');
+$routes->get('/transaksi/pembelian', 'transaksi::pembelian');
 
 /*
  * --------------------------------------------------------------------
