@@ -72,7 +72,6 @@
       <!-- Sidebar Menu -->
       <?= $this->include('layout/sidebar'); ?>
       <!-- /.sidebar-menu -->
-
     </div>
     <!-- /.sidebar -->
   </aside>
