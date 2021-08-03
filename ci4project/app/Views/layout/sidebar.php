@@ -51,25 +51,25 @@
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="/user/admin" class="nav-link">
                         <i class="fas fa-user-circle nav-icon"></i>
                         <p>Admin</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="/user/supplier" class="nav-link">
                         <i class="fas fa-user-circle nav-icon"></i>
                         <p>Suplier</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="/user/customer" class="nav-link">
                         <i class="fas fa-user-circle nav-icon"></i>
                         <p>Customer</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="/user/mekanik" class="nav-link">
                         <i class="fas fa-user-circle nav-icon"></i>
                         <p>Mekanik</p>
                     </a>
