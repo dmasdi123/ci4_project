@@ -70,7 +70,9 @@
       </div>
 
       <!-- Sidebar Menu -->
+
       <?= $this->include('layout/sidebar'); ?>
+
       <!-- /.sidebar-menu -->
 
     </div>
@@ -118,7 +120,8 @@
       Anything you want
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+    <!-- <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.-->
+    <strong>Copyright &copy; 2021 <a href="#">Kelompok 3 Pemrograman Framework</a>.</strong> All rights reserved.
   </footer>
 </div>
 <!-- ./wrapper -->
