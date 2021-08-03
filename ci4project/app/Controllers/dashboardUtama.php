@@ -6,6 +6,9 @@ class dashboardUtama extends BaseController
 {
     public function dashboardutama()
     {
-        return view('dashboardutama.php');
+        $data = [
+            'title' => 'Dashboard - Bengkel Jaya Motor',
+        ];
+        return view('dashboardutama.php', $data);
     }
 }

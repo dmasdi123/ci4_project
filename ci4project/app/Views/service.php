@@ -83,13 +83,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Pembelian</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
               <li class="breadcrumb-item">Transaksi</li>
-              <li class="breadcrumb-item active">Pembelian</li>
+              <li class="breadcrumb-item active">Service</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -102,48 +101,97 @@
       <div class="container-fluid">
         <div class="row mx-auto">
           <div class="col mx-auto">
-            <button class="btn btn-primary mb-3"><i class="fas fa-plus-circle mr-2"></i>Tambah Transaksi </button>
-            <div class="card card-primary" style="display: none;">
+            <div class="card card-primary">
               <div class="card-header">
-                <h2 class="card-title">Input Pembelian</h2>
+                <button class="btn btn-dark" data-toggle="modal" data-target="#ModaldaftarTransaksi" style="float: right;">Daftar transaksi</button>
+                <h1 class="card-title" style="font-size: 160%;">Transaksi (Service)</h1>
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-4">
+                    <label class="ml-1">Jenis Transaksi</label>
+                    <select class="custom-select" id="inputGroupSelect02" id="power" name="power">
+                      <option selected>Pilih...</option>
+                      <option value="">Penjualan Part</option>
+                      <option value="">Service</option>
+                    </select>
+                  </div>
+                </div>
               </div>
               <div class="card card-info">
-                <form class="form-horizontal" action="" method="POST">
+                <form class="form-horizontal" action="" id="form_pj" method="POST">
                   <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>">
-                  <div class="card-body ">
-                    <div class="row justify-content-center">
-                      <div class="col-md-8">
-                        <label class="ml-1" hidden>No Faktur</label>
-                        <input type="text" class="form-control mb-2" id_barang="id_barang" name="id_barang" autofocus hidden>
-
-                        <label class="ml-1">Nama Barang</label>
-                        <div class="input-group mb-2">
-                          <input type="text" class="form-control" id="nama_barang" name="nama_barang" autofocus placeholder="Nama Barang">
-
-                          <button type="button" onclick="" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalPembelian">
-                            Daftar Barang
-                          </button>
-                        </div>
-                        <label class="ml-1">Jumlah</label>
-                        <input type="text" class="form-control mb-2" id="qty" name="qty" autofocus>
-
-                        <label class="ml-1">Harga Beli</label>
-                        <input type="text" class="form-control mb-2 " id="harga_beli" name="harga_beli" autofocus>
-
-                        <label class="ml-1">Harga Jual</label>
-                        <input type="text" class="form-control mb-2" id="harga_jual" name="harga_jual" autofocus>
-
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <label class="ml-1">Invoice</label>
+                        <input type="text" class="form-control mb-2" name="invoice" value="JL0000" readonly>
+                        <label class="ml-1">Kasir</label>
+                        <input type="text" class="form-control mb-2" name="invoice" value="admin" readonly>
+                        <label class="ml-1">Mekanik</label>
+                        <input type="text" class="form-control mb-2" id="cust" name="cutomer" placeholder="Don jon">
                         <label class="ml-1">Tanggal Input</label>
                         <input type="text" class="form-control mb-2" value="<?= date('d-m-Y'); ?>" disabled>
-                        <input type="text" class="form-control mb-2" name="id_admin" hidden>
-                        <button class="btn btn-primary btn-md btn-block mt-3" type="submit">Simpan</button>
+                      </div>
+                      <div class="col-md-4">
+                        <label class="ml-1">Customer</label>
+                        <input type="number" class="form-control mb-2" id="telp" name="notelp" placeholder="Ketik nama...">
+                        <label class="ml-1">No Telp</label>
+                        <input type="number" class="form-control mb-2" id="telp" name="notelp" placeholder="Masukan No Telp">
+                        <label class="ml-1">Alamat</label>
+                        <input type="text" class="form-control mb-2" id="alamat" name="alamat" placeholder="Masukan Alamat">
+                        <label class="ml-1">No. Pol</label>
+                        <input type="text" class="form-control mb-2" id="alamat" name="alamat" placeholder="Masukan Alamat">
+                      </div>
+                      <div class="col-md-4">
+                        <label class="ml-1">Merk</label>
+                        <input type="number" class="form-control mb-2" id="telp" name="notelp" placeholder="Ketik nama...">
+                        <label class="ml-1">Tipe</label>
+                        <input type="number" class="form-control mb-2" id="telp" name="notelp" placeholder="Masukan No Telp">
+                        <label class="ml-1">K/m Datang</label>
+                        <input type="text" class="form-control mb-2" id="alamat" name="alamat" placeholder="Masukan Alamat">
+                        <label class="ml-1">Keluhan</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                      </div>
+                    </div>
+                    <div class="row mt-5">
+                      <div class="col-md-8">
+                        <label>Nama Barang</label>
+                      </div>
+                      <div class="col-md-1">
+                        <label>Qty</label>
+                      </div>
+                      <div class="col-md-3">
+                        <label>Harga Service</label>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-8">
+                        <div class="input-group">
+                          <input type="text" class="form-control" name="nama_brg" placeholder="Nama Barang" id="nama_brgpj">
+                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalPenjualan">
+                            Cari
+                          </button>
+                        </div>
+                      </div>
+                      <div class="col-1">
+                        <input type="number" class="form-control" name="qty" placeholder="Qty" id="qtypj">
+                      </div>
+                      <div class="col-3">
+                        <input type="number" class="form-control" name="harga_jual" placeholder="Harga" id="harga_jualpj">
+                        <input type="number" class="form-control" name="id_brg" placeholder="Harga" id="id_brg" hidden>
+                        <input type="text" class="form-control" id="id_sm" name="id_sm" value="<?= session()->get('id_adm') ?>" hidden>
+                      </div>
+                    </div>
+                    <div class="row mt-5">
+                      <div class="col text-center">
+                        <button class="btn btn-primary btn-lg" type="submit" id="btntambah">Tambah</button>
                       </div>
                     </div>
                   </div>
                 </form>
-
               </div>
-            </div> <!-- end card title -->
+            </div>
           </div>
         </div>
 

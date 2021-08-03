@@ -6,6 +6,17 @@ class transaksi extends BaseController
 {
     public function pembelian()
     {
-        return view('pembelian.php');
+        $data = [
+            'title' => 'Pembelian - Bengkel Jaya Motor',
+        ];
+        return view('pembelian.php', $data);
+    }
+
+    public function service()
+    {
+        $data = [
+            'title' => 'Service - Bengkel Jaya Motor',
+        ];
+        return view('service.php', $data);
     }
 }

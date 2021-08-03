@@ -83,13 +83,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Pembelian</h1>
+            <h1 class="m-0">Master Barang</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
-              <li class="breadcrumb-item">Transaksi</li>
-              <li class="breadcrumb-item active">Pembelian</li>
+              <li class="breadcrumb-item active">Master Barang</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -102,7 +101,7 @@
       <div class="container-fluid">
         <div class="row mx-auto">
           <div class="col mx-auto">
-            <button class="btn btn-primary mb-3"><i class="fas fa-plus-circle mr-2"></i>Tambah Transaksi </button>
+            <button class="btn btn-primary mb-3"><i class="fas fa-plus-circle mr-2"></i>Tambah Master Barang </button>
             <div class="card card-primary" style="display: none;">
               <div class="card-header">
                 <h2 class="card-title">Input Pembelian</h2>
