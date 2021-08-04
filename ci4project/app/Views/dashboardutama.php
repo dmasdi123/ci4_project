@@ -53,8 +53,8 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      <img src="<?= base_url(); ?>/adminlte_asset/asset//img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Bengkel Jaya Rusdi</span>
+      <img src="<?= base_url(); ?>/adminlte_asset/asset/img/gambar bengkel.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">Bengkel Jaya Jaya</span>
     </a>
 
     <!-- Sidebar -->
@@ -86,7 +86,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Home Page</h1>
+            <h1 class="m-0">Dashbourd Utama</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -104,7 +104,66 @@
       <div class="container-fluid">
         <div class="row mx-auto">
           <div class="col mx-auto">
-            <p>hallo</p>
+            <div class="card">
+              <!-- card body -->
+              <div class="card-body">
+                <div class="row">
+                  <div class="col text-center">
+                    <img src="<?= base_url(); ?>/adminlte_asset/asset/img/gambar bengkel.png" class="mx-auto" style="width: 20%;">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col text-center">
+                    <h1>
+                      Selamat Datang
+                    </h1>
+                    <h1>di Bengkel Jaya Jaya</h1>
+                  </div>
+                </div>
+                <div class="row md-8">
+                  <div class="col sm-8">
+                    <div class="small-box bg-success">
+                      <div class="inner">
+                        <h3>Pembelian</h3>
+
+                        <p>Data Pembelian</p>
+                      </div>
+                      <div class="icon">
+                        <i class="fas fa-shopping-cart text-white"></i>
+                      </div>
+                      <a href="/transaksi/pembelian" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                  </div>
+                  <div class="col md-8">
+                    <div class="small-box bg-success">
+                      <div class="inner">
+                        <h3>Service</h3>
+
+                        <p>Data Service</p>
+                      </div>
+                      <div class="icon">
+                        <i class="fas fa-tools text-white"></i>
+                      </div>
+                      <a href="/transaksi/service" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                  </div>
+                  <div class="col md-8">
+                    <div class="small-box bg-success">
+                      <div class="inner">
+                        <h3>Master Barang</h3>
+
+                        <p>Data Master Barang</p>
+                      </div>
+                      <div class="icon">
+                        <i class="fas fa-box-open text-white"></i>
+                      </div>
+                      <a href="/master_barang" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-body -->
+            </div>
           </div>
         </div>
       </div><!-- /.container-fluid -->

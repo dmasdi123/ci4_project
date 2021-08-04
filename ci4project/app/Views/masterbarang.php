@@ -53,8 +53,8 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      <img src="<?= base_url(); ?>/adminlte_asset/asset//img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Bengkel Jaya Rusdi</span>
+      <img src="<?= base_url(); ?>/adminlte_asset/asset/img/gambar bengkel.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">Bengkel Jaya Jaya</span>
     </a>
 
     <!-- Sidebar -->
@@ -83,7 +83,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Master Barang</h1>
+
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -101,83 +101,80 @@
       <div class="container-fluid">
         <div class="row mx-auto">
           <div class="col mx-auto">
-            <button class="btn btn-primary mb-3"><i class="fas fa-plus-circle mr-2"></i>Tambah Master Barang </button>
-            <div class="card card-primary" style="display: none;">
+            <div class="card card-primary">
               <div class="card-header">
-                <h2 class="card-title">Input Pembelian</h2>
+                <h3 class="card-title">Data Master Barang</h3>
               </div>
-              <div class="card card-info">
-                <form class="form-horizontal" action="" method="POST">
-                  <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>">
-                  <div class="card-body ">
-                    <div class="row justify-content-center">
-                      <div class="col-md-8">
-                        <label class="ml-1" hidden>No Faktur</label>
-                        <input type="text" class="form-control mb-2" id_barang="id_barang" name="id_barang" autofocus hidden>
-
-                        <label class="ml-1">Nama Barang</label>
-                        <div class="input-group mb-2">
-                          <input type="text" class="form-control" id="nama_barang" name="nama_barang" autofocus placeholder="Nama Barang">
-
-                          <button type="button" onclick="" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalPembelian">
-                            Daftar Barang
-                          </button>
-                        </div>
-                        <label class="ml-1">Jumlah</label>
-                        <input type="text" class="form-control mb-2" id="qty" name="qty" autofocus>
-
-                        <label class="ml-1">Harga Beli</label>
-                        <input type="text" class="form-control mb-2 " id="harga_beli" name="harga_beli" autofocus>
-
-                        <label class="ml-1">Harga Jual</label>
-                        <input type="text" class="form-control mb-2" id="harga_jual" name="harga_jual" autofocus>
-
-                        <label class="ml-1">Tanggal Input</label>
-                        <input type="text" class="form-control mb-2" value="<?= date('d-m-Y'); ?>" disabled>
-                        <input type="text" class="form-control mb-2" name="id_admin" hidden>
-                        <button class="btn btn-primary btn-md btn-block mt-3" type="submit">Simpan</button>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-
+              <!-- /.card-header -->
+              <div class="card-body">
+                <button type="button" class="btn btn-success mb-4" data-toggle="modal" data-target="#exampleModal"> Tambah Master Barang <i class="fas fa-plus-square ml-1"></i></button>
+                <table class="table">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th scope="col">No</th>
+                      <th scope="col">Nama barang</th>
+                      <th scope="col">QTY</th>
+                      <th scope="col">Harga Beli</th>
+                      <th scope="col">Harga Jual</th>
+                      <th scope="col">Tanggal Beli</th>
+                      <th scope="col">Nama Supplier</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>Knalpot Racing Scorpion</td>
+                      <td>5</td>
+                      <td>800.000</td>
+                      <td>1.000.000</td>
+                      <td>21 - 07 -2021</td>
+                      <td>PT Ban Production</td>
+                      <td>
+                        <button type="button" class="btn btn-warning"><i class="fas fa-edit"></i></button>
+                        <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>Knalpot Racing Scorpion</td>
+                      <td>5</td>
+                      <td>800.000</td>
+                      <td>1.000.000</td>
+                      <td>21 - 07 -2021</td>
+                      <td>PT Ban Production</td>
+                      <td>
+                        <button type="button" class="btn btn-warning"><i class="fas fa-edit"></i></button>
+                        <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">3</th>
+                      <td>Knalpot Racing Scorpion</td>
+                      <td>5</td>
+                      <td>800.000</td>
+                      <td>1.000.000</td>
+                      <td>21 - 07 -2021</td>
+                      <td>PT Ban Production</td>
+                      <td>
+                        <button type="button" class="btn btn-warning"><i class="fas fa-edit"></i></button>
+                        <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
-            </div> <!-- end card title -->
-          </div>
-        </div>
-
-        <div class="row mx-auto">
-          <div class="col mx-auto">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">First</th>
-                  <th scope="col">Last</th>
-                  <th scope="col">Handle</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Larry</td>
-                  <td>the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-              </tbody>
-            </table>
+              <!-- /.card-body -->
+              <div class="card-footer clearfix">
+                <ul class="pagination pagination-sm m-0 float-right">
+                  <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -197,5 +194,84 @@
   </footer>
 </div>
 <!-- ./wrapper -->
+
+<!-- modal tambah Master Barang form -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col">
+            <div class="card card-primary">
+              <!-- card header -->
+              <div class="card-header">
+                <h3 class="card-title">Form Tambah Master Barang</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- card body -->
+              <div class="card-body">
+                <div class="row">
+                  <div class="col">
+                    <form action="" method="POST">
+                      <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Nama Barang</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" placeholder="Masukan Nama Barang">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">QTY</label>
+                        <div class="col-sm-10">
+                          <input type="number" class="form-control" placeholder="Masukan QTY">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Harga Beli</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" placeholder="Masukan Harga Beli">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Harga Jual</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" placeholder="Masukan Harga Jual">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Tanggal Beli</label>
+                        <div class="col-sm-10">
+                          <input type="date" class="form-control" placeholder="Masukan Tanggal beli">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Nama Supplier</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" placeholder="Masukan Nama Supplier">
+                        </div>
+                      </div>
+                      <div class="justify-content-center">
+                        <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#exampleModal" style="text-align: center;"> Tambahkan Mekanik <i class="fas fa-plus-square ml-1"></i></button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-body -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- modal end -->
 
 <?= $this->endSection(); ?>

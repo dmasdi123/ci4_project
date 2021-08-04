@@ -53,8 +53,8 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
         <a href="index3.html" class="brand-link">
-            <img src="<?= base_url(); ?>/adminlte_asset/asset//img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-            <span class="brand-text font-weight-light">Bengkel Jaya Rusdi</span>
+            <img src="<?= base_url(); ?>/adminlte_asset/asset/img/gambar bengkel.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+            <span class="brand-text font-weight-light">Bengkel Jaya Jaya</span>
         </a>
 
         <!-- Sidebar -->
@@ -70,98 +70,7 @@
             </div>
 
             <!-- Sidebar Menu -->
-<<<<<<< HEAD
             <?= $this->include('layout/sidebar'); ?>
-=======
-            <nav class="mt-2">
-                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                    <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-th"></i>
-                            <p>
-                                Dashboard
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="fas fa-box-open nav-icon"></i>
-                            <p>
-                                Master Barang
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="fas fa-clipboard-list nav-icon"></i>
-                            <p>
-                                Transaksi
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="fas fa-shopping-cart nav-icon"></i>
-                                    <p>Pembelian</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="fas fa-wrench nav-icon"></i>
-                                    <p>Service</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="fas fa-users nav-icon"></i>
-                            <p>
-                                User
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="admin.php" class="nav-link">
-                                    <i class="fas fa-user-circle nav-icon"></i>
-                                    <p>Admin</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="supplier.php" class="nav-link">
-                                    <i class="fas fa-user-circle nav-icon"></i>
-                                    <p>Suplier</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="customer.php" class="nav-link">
-                                    <i class="fas fa-user-circle nav-icon"></i>
-                                    <p>Customer</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="mekanik.php" class="nav-link">
-                                    <i class="fas fa-user-circle nav-icon"></i>
-                                    <p>Mekanik</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="fas fa-sign-out-alt nav-icon"></i>
-                            <p>
-                                Logout
-                            </p>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
->>>>>>> bf16fefa0d3d8cb53df2c8141ef2eb7e68cfd5ed
             <!-- /.sidebar-menu -->
         </div>
         <!-- /.sidebar -->
@@ -174,7 +83,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Home Page</h1>
+
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
