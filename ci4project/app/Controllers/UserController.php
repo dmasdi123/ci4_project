@@ -2,8 +2,27 @@
 
 namespace App\Controllers;
 
+use \App\Models\userAdmin;
+use \App\Models\userCustomer;
+use \App\Models\userMekanik;
+use \App\Models\userSupplier;
+
 class userController extends BaseController
 {
+    protected $useradmin;
+    protected $usercustomer;
+    protected $usermekanik;
+    protected $usersupplier;
+
+
+    public function __construct()
+    {
+        $this->useradmin = new userAdmin();
+        $this->usercustomer = new userCustomer();
+        $this->usermekanik = new userMekanik();
+        $this->usersupplier = new userSupplier();
+    }
+
     public function userAdmin()
     {
         $data = [
@@ -11,6 +30,7 @@ class userController extends BaseController
         ];
         return view('user/admin.php', $data);
     }
+
 
     public function userSupplier()
     {
@@ -20,6 +40,7 @@ class userController extends BaseController
         return view('user/supplier.php', $data);
     }
 
+
     public function userCustomer()
     {
         $data = [
@@ -27,6 +48,7 @@ class userController extends BaseController
         ];
         return view('user/customer.php', $data);
     }
+
 
     public function userMekanik()
     {

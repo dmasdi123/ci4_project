@@ -215,37 +215,37 @@
                       <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Username</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" placeholder="Masukan username">
+                          <input type="text" class="form-control" id="username" placeholder="Masukan username">
                         </div>
                       </div>
                       <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Password</label>
                         <div class="col-sm-10">
-                          <input type="password" class="form-control" placeholder="Masukan Password">
+                          <input type="password" class="form-control" id="password" placeholder="Masukan Password">
                         </div>
                       </div>
                       <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Nama</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" placeholder="Masukan Nama">
+                          <input type="text" class="form-control" id="nama_user" placeholder="Masukan Nama">
                         </div>
                       </div>
                       <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Alamat</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" placeholder="Masukan Alamat">
+                          <input type="text" class="form-control" id="alamat" placeholder="Masukan Alamat">
                         </div>
                       </div>
                       <div class="form-group row">
                         <label class="col-sm-2 col-form-label">No Telp</label>
                         <div class="col-sm-10">
-                          <input type="number" class="form-control" placeholder="Masukan No Telp">
+                          <input type="number" class="form-control" id="notelp" placeholder="Masukan No Telp">
                         </div>
                       </div>
                       <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Role</label>
                         <div class="col-sm-10">
-                          <input type="number" class="form-control" placeholder="Admin" value="admin" disabled>
+                          <input type="number" class="form-control" id="role" placeholder="Admin" value="admin" disabled>
                         </div>
                       </div>
                       <div class="justify-content-center">

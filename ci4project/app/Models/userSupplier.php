@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class UserController extends Model
+class userSupplier extends Model
 {
     public function getDashboardSupplier()
     {

@@ -6,11 +6,9 @@ class Auth extends BaseController
 {
     public function login()
     {
-        return view('auth/login.php');
-    }
-
-    public function register()
-    {
-        return view('auth/register.php');
+        $data = [
+            'title' => 'Halaman Login',
+        ];
+        return view('auth/login.php', $data);
     }
 }

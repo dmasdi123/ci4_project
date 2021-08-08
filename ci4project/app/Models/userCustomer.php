@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class UserController extends Model
+class userCustomer extends Model
 {
     public function getDashboardCustomer()
     {

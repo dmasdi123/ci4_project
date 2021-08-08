@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class UserController extends Model
+class userMekanik extends Model
 {
     public function getDashboardMekanik()
     {
