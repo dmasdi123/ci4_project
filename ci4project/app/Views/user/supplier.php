@@ -122,36 +122,19 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Mark</td>
-                                            <td>Surabaya</td>
-                                            <td>081234567</td>
-                                            <td>
-                                                <button type="button" class="btn btn-warning"><i class="fas fa-edit"></i></button>
-                                                <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>Jacob</td>
-                                            <td>Surabaya</td>
-                                            <td>081234567</td>
-                                            <td>
-                                                <button type="button" class="btn btn-warning"><i class="fas fa-edit"></i></button>
-                                                <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td>Larry</td>
-                                            <td>Surabaya</td>
-                                            <td>081234567</td>
-                                            <td>
-                                                <button type="button" class="btn btn-warning"><i class="fas fa-edit"></i></button>
-                                                <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
-                                            </td>
-                                        </tr>
+                                        <?php $i = 1; ?>
+                                        <?php foreach ($supplier as $supp) : ?>
+                                            <tr>
+                                                <th scope="row"><?= $i++; ?></th>
+                                                <td><?= $supp['nama_supp']; ?></td>
+                                                <td><?= $supp['alamat']; ?></td>
+                                                <td><?= $supp['notelp']; ?></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-warning"><i class="fas fa-edit"></i></button>
+                                                    <a href="<?= base_url(); ?>/userController/deletesupp/<?= $supp['id_supp']; ?>"><button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button></a>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -209,27 +192,27 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <form action="" method="POST">
+                                        <form action="<?= base_url(); ?>/userController/addusersupp" method="POST">
                                             <div class="form-group row">
                                                 <label class="col-sm-2 col-form-label">Nama</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" class="form-control" placeholder="Masukan Nama">
+                                                    <input type="text" class="form-control" name="nama_supp" id="nama_supp" placeholder="Masukan Nama">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-sm-2 col-form-label">Alamat</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" class="form-control" placeholder="Masukan Alamat">
+                                                    <input type="text" class="form-control" name="alamat" id="alamat" placeholder="Masukan Alamat">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-sm-2 col-form-label">No Telp</label>
                                                 <div class="col-sm-10">
-                                                    <input type="number" class="form-control" placeholder="Masukan No Telp">
+                                                    <input type="number" class="form-control" name="notelp" id="notelp" placeholder="Masukan No Telp">
                                                 </div>
                                             </div>
                                             <div class="justify-content-center">
-                                                <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#exampleModal" style="text-align: center;"> Tambahkan Supplier <i class="fas fa-user-plus"></i></button>
+                                                <button type="submit" class="btn btn-success btn-block" style="text-align: center;"> Tambahkan Supplier <i class="fas fa-user-plus"></i></button>
                                             </div>
                                         </form>
                                     </div>

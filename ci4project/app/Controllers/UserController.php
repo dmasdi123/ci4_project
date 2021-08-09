@@ -23,24 +23,71 @@ class userController extends BaseController
         $this->usersupplier = new userSupplier();
     }
 
+
+
+    // controller untuk admin start -----------------------------------------------------------------
     public function userAdmin()
     {
+        // $admin = $this->useradmin->getDashboardAdmin();
         $data = [
             'title' => 'Data Admin - Bengkel Jaya Motor',
+            'admin' => $this->useradmin->getDashboardAdmin()
         ];
         return view('user/admin.php', $data);
     }
 
+    public function adduseradm()
+    {
+        // dd($this->request->getVar());
+        $this->useradmin->insert([
+            'username' => $this->request->getVar('username'),
+            'password' => $this->request->getVar('password'),
+            'nama_user' => $this->request->getVar('nama_user'),
+            'alamat' => $this->request->getVar('alamat'),
+            'notelp' => $this->request->getVar('notelp'),
+            'role' => $this->request->getVar('role')
+        ]);
 
+        return redirect()->to('user/admin');
+    }
+
+    public function deleteadm($iduser = null)
+    {
+        $this->useradmin->delete($iduser);
+        return redirect()->to('user/admin');
+    }
+    // controller untuk admin end -----------------------------------------------------------------------
+
+
+
+    // controller untuk supplier start ------------------------------------------------------------------
     public function userSupplier()
     {
         $data = [
             'title' => 'Data Supplier - Bengkel Jaya Motor',
+            'supplier' => $this->usersupplier->getDashboardSupplier()
         ];
         return view('user/supplier.php', $data);
     }
 
+    public function addusersupp()
+    {
+        $this->usersupplier->insert([
+            'nama_supp' => $this->request->getVar('nama_supp'),
+            'alamat' => $this->request->getVar('alamat'),
+            'notelp' => $this->request->getVar('notelp')
+        ]);
+        return redirect()->to('user/supplier');
+    }
 
+    public function deletesupp($idsupp = null)
+    {
+        $this->usersupplier->delete($idsupp);
+        return redirect()->to('user/supplier');
+    }
+    // controller untuk supplier end --------------------------------------------------------------------
+
+    // controller untuk customer start ------------------------------------------------------------------
     public function userCustomer()
     {
         $data = [
@@ -48,8 +95,9 @@ class userController extends BaseController
         ];
         return view('user/customer.php', $data);
     }
+    // controller untuk customer end -------------------------------------------------------------------
 
-
+    // controller untuk mekanik start ------------------------------------------------------------------
     public function userMekanik()
     {
         $data = [
@@ -57,4 +105,5 @@ class userController extends BaseController
         ];
         return view('user/mekanik.php', $data);
     }
+    // controller untuk mekanik end ------------------------------------------------------------------
 }

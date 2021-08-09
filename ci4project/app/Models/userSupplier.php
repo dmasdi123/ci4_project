@@ -6,8 +6,12 @@ use CodeIgniter\Model;
 
 class userSupplier extends Model
 {
+    protected $table = 'supplier';
+    protected $primaryKey = 'id_supp';
+    protected $allowedFields = ['id_supp', 'nama_supp', 'alamat', 'notelp'];
+
     public function getDashboardSupplier()
     {
-        echo 'hello';
+        return $this->findAll();
     }
 }

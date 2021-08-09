@@ -121,39 +121,22 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Surabaya</td>
-                      <td>081234567</td>
-                      <td>Admin</td>
-                      <td>
-                        <button type="button" class="btn btn-warning"><i class="fas fa-edit"></i></button>
-                        <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Jacob</td>
-                      <td>Surabaya</td>
-                      <td>081234567</td>
-                      <td>Admin</td>
-                      <td>
-                        <button type="button" class="btn btn-warning"><i class="fas fa-edit"></i></button>
-                        <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Larry</td>
-                      <td>Surabaya</td>
-                      <td>081234567</td>
-                      <td>Admin</td>
-                      <td>
-                        <button type="button" class="btn btn-warning"><i class="fas fa-edit"></i></button>
-                        <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
-                      </td>
-                    </tr>
+                    <?php $i = 1; ?>
+                    <?php foreach ($admin as $adm) : ?>
+                      <tr>
+                        <th scope="row"><?= $i++; ?></th>
+                        <td><?= $adm['nama_user']; ?></td>
+                        <td><?= $adm['alamat']; ?></td>
+                        <td><?= $adm['notelp']; ?></td>
+                        <td><?= $adm['role']; ?></td>
+                        <td>
+                          <button type="button" class="btn btn-warning"><i class="fas fa-edit"></i></button>
+
+                          <a href="<?= base_url(); ?>/userController/deleteadm/<?= $adm['id_user']; ?>"><button name="iduser" type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button></a>
+
+                        </td>
+                      </tr>
+                    <?php endforeach; ?>
                   </tbody>
                 </table>
               </div>
@@ -211,45 +194,45 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col">
-                    <form action="" method="POST">
+                    <form action="<?= base_url(); ?>/userController/adduseradm" method="POST">
                       <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Username</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="username" placeholder="Masukan username">
+                          <input type="text" class="form-control" name="username" id="username" placeholder="Masukan username">
                         </div>
                       </div>
                       <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Password</label>
                         <div class="col-sm-10">
-                          <input type="password" class="form-control" id="password" placeholder="Masukan Password">
+                          <input type="password" class="form-control" name="password" id="password" placeholder="Masukan Password">
                         </div>
                       </div>
                       <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Nama</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="nama_user" placeholder="Masukan Nama">
+                          <input type="text" class="form-control" name="nama_user" id="nama_user" placeholder="Masukan Nama">
                         </div>
                       </div>
                       <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Alamat</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="alamat" placeholder="Masukan Alamat">
+                          <input type="text" class="form-control" name="alamat" id="alamat" placeholder="Masukan Alamat">
                         </div>
                       </div>
                       <div class="form-group row">
                         <label class="col-sm-2 col-form-label">No Telp</label>
                         <div class="col-sm-10">
-                          <input type="number" class="form-control" id="notelp" placeholder="Masukan No Telp">
+                          <input type="number" class="form-control" name="notelp" id="notelp" placeholder="Masukan No Telp">
                         </div>
                       </div>
                       <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Role</label>
                         <div class="col-sm-10">
-                          <input type="number" class="form-control" id="role" placeholder="Admin" value="admin" disabled>
+                          <input type="number" class="form-control" name="role" id="role" placeholder="Admin" value="admin" disabled>
                         </div>
                       </div>
                       <div class="justify-content-center">
-                        <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#exampleModal" style="text-align: center;"> Tambahkan Admin <i class="fas fa-user-plus"></i></button>
+                        <button type="submit" class="btn btn-success btn-block" style="text-align: center;"> Tambahkan Admin <i class="fas fa-user-plus"></i></button>
                       </div>
                     </form>
                   </div>

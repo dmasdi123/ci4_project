@@ -8,11 +8,17 @@ class userAdmin extends Model
 {
 
     protected $table = 'user';
-    protected $useTimestamps = true;
-    protected $allowedFields = ['id_user', 'username', 'password', 'alamat', 'notelp', 'nama_user', 'role'];
+    protected $primaryKey = 'id_user';
+    // protected $useTimestamps = true;
+    protected $allowedFields = ['id_user', 'username', 'password', 'nama_user', 'alamat', 'notelp', 'role'];
 
     public function getDashboardAdmin()
     {
         return $this->findAll();
     }
+
+    // public function deleteadm($iduser)
+    // {
+    //     return $this->delete('id_user', $iduser);
+    // }
 }
