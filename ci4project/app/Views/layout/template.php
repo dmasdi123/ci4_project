@@ -28,6 +28,53 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="<?= base_url(); ?>/adminlte_asset/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="<?= base_url(); ?>/adminlte_asset/asset/js/adminlte.min.js"></script>
+
+    <!-- script ganti jenis transaksi -->
+    <script>
+        $("#penjualan").css("display", "none");
+        $("#tbl_pj").css("display", "none");
+        $("#btnpj").css("display", "none");
+        $('#pilih_trx').on('change', function() {
+            if (this.value == 0) { //service
+                $("#penjualan").css("display", "none");
+                $("#service").attr("style", "visibility: visible");
+                $("#tbl_service").attr("style", "visibility: visible");
+                $("#btnservice").attr("style", "visibility: visible");
+            } else { //penjualan
+                $("#service").css("display", "none");
+                $("#penjualan").attr("style", "visibility: visible");
+                $("#tbl_service").css("display", "none");
+                $("#btnservice").css("display", "none");
+                $("#tbl_pj").attr("style", "visibility: visible");
+                $("#btnpj").attr("style", "visibility: visible");
+            }
+
+
+        });
+    </script>
+
+    <!-- add nama barang dari modal ke inputan penjualan-->
+    <script>
+        $(".addbrg").click(function(e) {
+            e.preventDefault();
+            $.ajax({
+                type: "GET",
+                url: $(this).attr('href'), //data dikirim dari a href
+                dataType: "JSON",
+                success: function(result) {
+                    for (var i = 0; i < result.length; i++) {
+                        $("#nama_brgpj").val(result[i].nama_barang);
+                        $("#harga_jualpj").val(result[i].harga_jual);
+                        $("#id_brg").val(result[i].id_barang);
+
+                    }
+                },
+                error: function(xhr, ajaxOptions, thrownError) { // Ketika ada error
+                    alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError); // Munculkan alert error
+                }
+            })
+        })
+    </script>
 </body>
 
 </html>
