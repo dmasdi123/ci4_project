@@ -6,6 +6,7 @@ use \App\Models\userAdmin;
 use \App\Models\userCustomer;
 use \App\Models\userMekanik;
 use \App\Models\userSupplier;
+use CodeIgniter\HTTP\Request;
 
 class userController extends BaseController
 {
@@ -94,8 +95,27 @@ class userController extends BaseController
     {
         $data = [
             'title' => 'Data Customer - Bengkel Jaya Motor',
+            'customer' => $this->usercustomer->getDashboardCustomer()
         ];
         return view('user/customer.php', $data);
+    }
+
+    public function addcustomer()
+    {
+        $this->usercustomer->insert([
+            'no_pol' => $this->request->getVar('no_pol'),
+            'nama_cus' => $this->request->getVar('nama_cus'),
+            'alamat_cus' => $this->request->getVar('alamat_cus'),
+            'merk' => $this->request->getVar('merk'),
+            'tipe' => $this->request->getVar('tipe')
+        ]);
+        return redirect()->to('/user/customer');
+    }
+
+    public function deletecus($idcus = null)
+    {
+        $this->usercustomer->delete($idcus);
+        return redirect()->to('/user/customer');
     }
     // controller untuk customer end -------------------------------------------------------------------
 
@@ -104,8 +124,27 @@ class userController extends BaseController
     {
         $data = [
             'title' => 'Data Mekanik - Bengkel Jaya Motor',
+            'mekanik' => $this->usermekanik->getDashboardMekanik(),
+            'id_mekan' => $this->usermekanik->getIdmekan()
         ];
         return view('user/mekanik.php', $data);
+    }
+
+    public function addmekanik()
+    {
+        $this->usermekanik->insert([
+            'id_mekanik' => $this->usermekanik->getIdmekan(),
+            'nama_mekan' => $this->request->getVar('nama_mekan'),
+            'alamat' => $this->request->getVar('alamat'),
+            'notelp' => $this->request->getVar('notelp')
+        ]);
+        return redirect()->to('user/mekanik');
+    }
+
+    public function deletemekan($idmekan = null)
+    {
+        $this->usermekanik->delete($idmekan);
+        return redirect()->to('/user/mekanik');
     }
     // controller untuk mekanik end ------------------------------------------------------------------
 }

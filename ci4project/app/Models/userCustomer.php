@@ -6,8 +6,12 @@ use CodeIgniter\Model;
 
 class userCustomer extends Model
 {
+    protected $table = 'customer';
+    protected $primaryKey = 'id_cus';
+    protected $allowedFields = ['id_cus', 'no_pol', 'nama_cus', 'alamat_cus', 'merk', 'tipe'];
+
     public function getDashboardCustomer()
     {
-        echo 'hello';
+        return $this->findAll();
     }
 }

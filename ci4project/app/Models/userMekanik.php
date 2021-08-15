@@ -6,8 +6,22 @@ use CodeIgniter\Model;
 
 class userMekanik extends Model
 {
+
+    protected $table = 'mekanik';
+    protected $primaryKey = 'id_mekanik';
+    protected $allowedFields = ['id_mekanik', 'nama_mekan', 'alamat', 'notelp'];
+
     public function getDashboardMekanik()
     {
-        echo 'hello';
+        return $this->findAll();
+    }
+
+    public function getIdmekan()
+    {
+        $id = $this->selectMax('id_mekanik')->findAll();
+        foreach ($id as $key) {
+            $id_mekan = $key['id_mekanik'] + 1;
+        }
+        return $id_mekan;
     }
 }

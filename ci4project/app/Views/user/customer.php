@@ -122,42 +122,21 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>1W234RTX5689</td>
-                                            <td>Mark</td>
-                                            <td>Surabaya</td>
-                                            <td>Honda</td>
-                                            <td>Supra-800 cc</td>
-                                            <td>
-                                                <button type="button" class="btn btn-warning"><i class="fas fa-edit"></i></button>
-                                                <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>1W234RTX5689</td>
-                                            <td>Jacob</td>
-                                            <td>Surabaya</td>
-                                            <td>Honda</td>
-                                            <td>Supra-800 cc</td>
-                                            <td>
-                                                <button type="button" class="btn btn-warning"><i class="fas fa-edit"></i></button>
-                                                <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td>1W234RTX5689</td>
-                                            <td>Larry</td>
-                                            <td>Surabaya</td>
-                                            <td>Honda</td>
-                                            <td>Supra-800 cc</td>
-                                            <td>
-                                                <button type="button" class="btn btn-warning"><i class="fas fa-edit"></i></button>
-                                                <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
-                                            </td>
-                                        </tr>
+                                        <?php $i = 1; ?>
+                                        <?php foreach ($customer as $cus) : ?>
+                                            <tr>
+                                                <th scope="row"><?= $i++; ?></th>
+                                                <td><?= $cus['no_pol']; ?></td>
+                                                <td><?= $cus['nama_cus']; ?></td>
+                                                <td><?= $cus['alamat_cus']; ?></td>
+                                                <td><?= $cus['merk']; ?></td>
+                                                <td><?= $cus['tipe']; ?></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-warning"><i class="fas fa-edit"></i></button>
+                                                    <a href="<?= base_url(); ?>/userController/deletecus/<?= $cus['id_cus']; ?>"><button name="id_cus" type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button></a>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -215,39 +194,39 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <form action="" method="POST">
+                                        <form action="<?= base_url(); ?>/UserController/addcustomer" method="POST">
                                             <div class="form-group row">
                                                 <label class="col-sm-2 col-form-label">No Polisi</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" class="form-control" placeholder="Masukan Nomor Polisi">
+                                                    <input type="text" class="form-control" id="no_pol" name="no_pol" placeholder="Masukan Nomor Polisi">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-sm-2 col-form-label">Nama</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" class="form-control" placeholder="Masukan Nama">
+                                                    <input type="text" class="form-control" id="nama_cus" name="nama_cus" placeholder="Masukan Nama">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-sm-2 col-form-label">Alamat</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" class="form-control" placeholder="Masukan Alamat">
+                                                    <input type="text" class="form-control" id="alamat_cus" name="alamat_cus" placeholder="Masukan Alamat">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-sm-2 col-form-label">Merk</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" class="form-control" placeholder="Masukan Merk Kendaraan">
+                                                    <input type="text" class="form-control" id="merk" name="merk" placeholder="Masukan Merk Kendaraan">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-sm-2 col-form-label">Tipe</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" class="form-control" placeholder="Masukan Tipe Kendaraan">
+                                                    <input type="text" class="form-control" id="tipe" name="tipe" placeholder="Masukan Tipe Kendaraan">
                                                 </div>
                                             </div>
                                             <div class="justify-content-center">
-                                                <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#exampleModal" style="text-align: center;"> Tambahkan Customer <i class="fas fa-user-plus"></i></button>
+                                                <button type="submit" class="btn btn-success btn-block" data-toggle="modal" data-target="#exampleModal" style="text-align: center;"> Tambahkan Customer <i class="fas fa-user-plus"></i></button>
                                             </div>
                                         </form>
                                     </div>
