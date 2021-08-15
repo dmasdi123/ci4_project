@@ -49,7 +49,7 @@ $routes->get('/user/editmekanik/(:num)', 'UserController::editmekan/$1');
 $routes->get('/user/editsupplier', 'UserController::editsupplier');
 $routes->get('/user/editcustomer', 'UserController::editcustomer');
 $routes->get('/user/editmekanik', 'UserController::editmekanik');
-$routes->get('/auth/login', 'Auth::login');
+$routes->get('/', 'Auth::login');
 // $routes->get('/auth/register', 'Auth::register');
 
 
