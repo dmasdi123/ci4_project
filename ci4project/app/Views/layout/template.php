@@ -29,10 +29,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- AdminLTE App -->
     <script src="<?= base_url(); ?>/adminlte_asset/asset/js/adminlte.min.js"></script>
 
+    <!-- enable function starup -->
+    <script>
+        $(document).ready(function() {
+            loadlistpj();
+
+        });
+    </script>
+
     <!-- script ganti jenis transaksi -->
     <script>
         $("#penjualan").css("display", "none");
-        $("#tbl_pj").css("display", "none");
+        $(".tbl_pj").css("display", "none");
         $("#btnpj").css("display", "none");
         $('#pilih_trx').on('change', function() {
             if (this.value == 0) { //service
@@ -45,7 +53,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 $("#penjualan").attr("style", "visibility: visible");
                 $("#tbl_service").css("display", "none");
                 $("#btnservice").css("display", "none");
-                $("#tbl_pj").attr("style", "visibility: visible");
+                $(".tbl_pj").attr("style", "visibility: visible");
                 $("#btnpj").attr("style", "visibility: visible");
             }
 
@@ -74,6 +82,159 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 }
             })
         })
+    </script>
+
+    <!-- input name user  -->
+    <script>
+        $("#cust").keyup(function() {
+            var inv = $(this).val();
+            $.ajax({
+                type: 'POST',
+                url: '<?= base_url(); ?>/UserController/showcust',
+                dataType: "JSON",
+                data: {
+                    id: inv
+                },
+                success: function(result) {
+                    for (var i = 0; i < result.length; i++) {
+                        // console.log(result[i].telp)
+                        $("#telppj").val(result[i].telp);
+                        $("#alamat").val(result[i].alamat_cus);
+                        $("#idcust").val(result[i].id_cus);
+
+                    }
+
+                },
+                error: function(xhr, ajaxOptions, thrownError) { // Ketika ada error
+                    alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError); // Munculkan alert error
+                }
+            });
+
+
+        })
+    </script>
+
+    <!-- crud pj into db transaksi -->
+    <script>
+        $("#btntambahPJ").click(function(e) {
+            e.preventDefault();
+            $.ajax({
+                type: "POST",
+                url: '<?= base_url(); ?>/transaksi/insertPJ',
+                data: $("#form_pj").serialize(), //ambil semua data di dalam form
+                success: function() {
+                    loadlistpj();
+                    $('#nama_brgpj').val('');
+                    $('#qtypj').val('');
+                    $('#harga_jualpj').val('');
+                },
+                error: function(xhr, ajaxOptions, thrownError) { // Ketika ada error
+                    // alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError); // Munculkan alert error
+                    alert("input dulu customernya :)")
+                }
+            })
+        })
+    </script>
+
+    <!-- load list penjualan -->
+    <script>
+        function loadlistpj() {
+            $.ajax({
+                    type: "POST",
+                    url: '<?= base_url(); ?>/transaksi/showlistPJ',
+                    data: 'inv=' + $('input[name=invoicePJ]').val(),
+                    dataType: "JSON",
+                    success: function(result) {
+                        var html = '';
+                        for (var i = 0; i < result.length; i++) {
+                            var no = parseInt(i);
+                            no++;
+                            var total = result[i].qty_trx * result[i].harga_trx;
+                            html += '<tr>' +
+                                '<td>' + no + '</td>' +
+                                '<td>' + result[i].nama_barang + '</td>' +
+                                '<td>' + result[i].qty_trx + '</td>' +
+                                '<td>' + total + '</td>' +
+                                '<td><a class="deletelistPJ" href="/transaksi/delete?id=' + result[i].id_trx + '"><button class="btn btn-danger" onclick="deletelistPJ()" type="button"><i class="fas fa-trash"></i></button></td>' +
+                                '</tr>';
+
+
+                        }
+                        $('#data_pj').html(html);
+
+
+                    },
+                    error: function(xhr, ajaxOptions, thrownError) { // Ketika ada error
+                        alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError); // Munculkan alert error
+                    }
+
+
+                }),
+                $.ajax({
+                    type: 'POST',
+                    url: '<?= base_url(); ?>/transaksi/getSumPricePJ',
+                    dataType: "JSON",
+                    data: 'inv=' + $('input[name=invoicePJ]').val(),
+                    success: function(result) {
+                        for (var i = 0; i < result.length; i++) {
+                            $("#gtotal").val(result[i].harga_totaltrx);
+
+                        }
+                    },
+                    error: function(xhr, ajaxOptions, thrownError) { // Ketika ada error
+                        alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError); // Munculkan alert error
+                    }
+                });
+
+        }
+    </script>
+
+    <!-- delete item from load list penjualan -->
+    <script>
+        function deletelistPJ() {
+            $(".deletelistPJ").click(function(e) {
+                e.preventDefault();
+                $.ajax({
+                    type: "GET",
+                    url: $(this).attr('href'), //data dikirim dari a href
+                    dataType: "JSON",
+                    success: function() {
+                        loadlistpj();
+                    },
+                    error: function(xhr, ajaxOptions, thrownError) { // Ketika ada error
+                        alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError); // Munculkan alert error
+                    }
+                })
+            })
+        }
+    </script>
+
+    <!-- input nota ke db nota -->
+    <script>
+        $("#btn_cekoutpj").click(function(e) {
+            e.preventDefault();
+            $.ajax({
+                type: "POST",
+                url: '<?= base_url(); ?>/print_nota/insertnota',
+                data: $("#form_pj").serialize(), //ambil semua data di dalam form
+                success: function() {
+                    modalshow();
+                },
+                error: function(xhr, ajaxOptions, thrownError) { // Ketika ada error
+                    alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError); // Munculkan alert error
+                }
+            })
+        })
+    </script>
+
+    <script>
+        function modalshow() {
+            var myModal = new bootstrap.Modal(document.getElementById('myModal'), {
+                keyboard: false
+
+            })
+            myModal.show()
+        }
     </script>
 </body>
 

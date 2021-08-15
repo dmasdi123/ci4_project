@@ -6,8 +6,22 @@ use CodeIgniter\Model;
 
 class userCustomer extends Model
 {
-    public function getDashboardCustomer()
+    protected $table = 'customer';
+    protected $primaryKey = 'id_cus';
+
+    public function getallcust()
     {
-        echo 'hello';
+        return $this->findAll();
+    }
+
+    public function showCustbyId($id)
+    {
+        return $this->select('*')->where('nama_cus', $id)->findAll();
+    }
+
+    public function showCustbyId2($id)
+    {
+        // return $this->select('*')->where('id_cus', $id)->findAll();
+        return $this->select('*')->join('transaksi', 'transaksi.id_cus = customer.id_cus')->where('invoice', $id)->findAll();
     }
 }
