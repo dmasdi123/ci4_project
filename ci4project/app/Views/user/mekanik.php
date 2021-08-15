@@ -128,8 +128,8 @@
                                                 <td><?= $mek['alamat']; ?></td>
                                                 <td><?= $mek['notelp']; ?></td>
                                                 <td>
-                                                    <button type="button" class="btn btn-warning"><i class="fas fa-edit"></i></button>
-                                                    <a href="<?= base_url(); ?>/userController/deletemekan/<?= $mek['id_mekanik']; ?>"><button name="id_mekanik" type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button></a>
+                                                    <a href="<?= base_url(); ?>/UserController/editmekan/<?= $mek['id_mekanik']; ?>"><button type="button" class="btn btn-warning"><i class="fas fa-edit"></i></button></a>
+                                                    <a href="<?= base_url(); ?>/userController/deletemekan/<?= $mek['id_mekanik']; ?>"><button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button></a>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>

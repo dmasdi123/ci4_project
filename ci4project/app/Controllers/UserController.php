@@ -27,8 +27,10 @@ class userController extends BaseController
 
 
     // controller untuk admin start -----------------------------------------------------------------
+
     public function userAdmin()
     {
+        // $getidser = $this->request->getVar('')
         // $admin = $this->useradmin->getDashboardAdmin();
         $data = [
             'title' => 'Data Admin - Bengkel Jaya Motor',
@@ -56,6 +58,28 @@ class userController extends BaseController
     {
         $this->useradmin->delete($iduser);
         return redirect()->to('user/admin');
+    }
+
+    public function editadmin($iduser)
+    {
+        $data = [
+            'title' => 'Form Edit Admin',
+            'admin' => $this->useradmin->getDashboardAdmin($iduser)
+        ];
+        return view('/user/editadmin', $data);
+    }
+
+    public function updateadmin($id_user)
+    {
+        $this->useradmin->save([
+            'id_user' => $id_user,
+            'nama_user' => $this->request->getVar('nama_user'),
+            'alamat' => $this->request->getVar('alamat'),
+            'notelp' => $this->request->getVar('notelp'),
+            'role' => $this->request->getVar('role')
+        ]);
+        return redirect()->to('/user/admin');
+        // dd($this->request->getVar());
     }
     // controller untuk admin end -----------------------------------------------------------------------
 
@@ -88,6 +112,26 @@ class userController extends BaseController
         $this->usersupplier->delete($idsupp);
         return redirect()->to('user/supplier');
     }
+
+    public function editsupp($idsupp)
+    {
+        $data = [
+            'title' => 'Form Edit Admin',
+            'supplier' => $this->usersupplier->getDashboardSupplier($idsupp)
+        ];
+        return view('/user/editsupplier', $data);
+    }
+
+    public function updatesupp($idsupp)
+    {
+        $this->usersupplier->save([
+            'id_supp' => $idsupp,
+            'nama_supp' => $this->request->getVar('nama_supp'),
+            'alamat' => $this->request->getVar('alamat'),
+            'notelp' => $this->request->getVar('notelp')
+        ]);
+        return redirect()->to('/user/supplier');
+    }
     // controller untuk supplier end --------------------------------------------------------------------
 
     // controller untuk customer start ------------------------------------------------------------------
@@ -118,6 +162,30 @@ class userController extends BaseController
         $this->usercustomer->delete($idcus);
         return redirect()->to('/user/customer');
     }
+
+    public function editcust($idcust)
+    {
+        $data = [
+            'title' => 'Form Edit Customer',
+            'customer' => $this->usercustomer->getDashboardCustomer($idcust)
+        ];
+        return view('/user/editcustomer', $data);
+    }
+
+    public function updatecust($idcust)
+    {
+        $this->usercustomer->save([
+            'id_cus' => $idcust,
+            'no_pol' => $this->request->getVar('no_pol'),
+            'nama_cus' => $this->request->getVar('nama_cus'),
+            'telp' => $this->request->getVar('telp'),
+            'alamat_cus' => $this->request->getVar('alamat_cus'),
+            'merk' => $this->request->getVar('merk'),
+            'tipe' => $this->request->getVar('tipe')
+
+        ]);
+        return redirect()->to('/user/customer');
+    }
     // controller untuk customer end -------------------------------------------------------------------
 
     // controller untuk mekanik start ------------------------------------------------------------------
@@ -145,6 +213,28 @@ class userController extends BaseController
     public function deletemekan($idmekan = null)
     {
         $this->usermekanik->delete($idmekan);
+        return redirect()->to('/user/mekanik');
+    }
+
+    public function editmekan($idmekan)
+    {
+        $data = [
+            'title' => 'Form Edit Mekanik',
+            'mekanik' => $this->usermekanik->getDashboardMekanik($idmekan)
+        ];
+        return view('/user/editmekanik', $data);
+    }
+
+    public function updatemekan($idmekan)
+    {
+        $this->usermekanik->save([
+            'id_cus' => $idmekan,
+            'nama_mekan' => $this->request->getVar('nama_mekan'),
+            'alamat' => $this->request->getVar('alamat'),
+            'notelp' => $this->request->getVar('notelp')
+
+
+        ]);
         return redirect()->to('/user/mekanik');
     }
     // controller untuk mekanik end ------------------------------------------------------------------

@@ -70,9 +70,7 @@
             </div>
 
             <!-- Sidebar Menu -->
-            <!-- Sidebar Menu -->
             <?= $this->include('layout/sidebar'); ?>
-            <!-- /.sidebar-menu -->
             <!-- /.sidebar-menu -->
         </div>
         <!-- /.sidebar -->
@@ -91,7 +89,7 @@
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
                             <li class="breadcrumb-item">User</li>
-                            <li class="breadcrumb-item active">Supplier</li>
+                            <li class="breadcrumb-item active"> Form Edit Supplier</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -102,52 +100,45 @@
         <!-- Main content -->
         <div class="content">
             <div class="container-fluid">
-                <div class="row mx-auto">
-                    <div class="col mx-auto">
+                <div class="row">
+                    <div class="col">
                         <div class="card card-primary">
+                            <!-- card header -->
                             <div class="card-header">
-                                <h3 class="card-title">Data Supplier</h3>
+                                <h3 class="card-title">Form Tambah Admin</h3>
                             </div>
                             <!-- /.card-header -->
+                            <!-- card body -->
                             <div class="card-body">
-                                <button type="button" class="btn btn-success mb-4" data-toggle="modal" data-target="#exampleModal"> Tambah Supplier <i class="fas fa-user-plus ml-2"></i></button>
-                                <table class="table">
-                                    <thead class="thead-dark">
-                                        <tr>
-                                            <th scope="col">No</th>
-                                            <th scope="col">Nama</th>
-                                            <th scope="col">Alamat</th>
-                                            <th scope="col">No Telp</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php $i = 1; ?>
-                                        <?php foreach ($supplier as $supp) : ?>
-                                            <tr>
-                                                <th scope="row"><?= $i++; ?></th>
-                                                <td><?= $supp['nama_supp']; ?></td>
-                                                <td><?= $supp['alamat']; ?></td>
-                                                <td><?= $supp['notelp']; ?></td>
-                                                <td>
-                                                    <a href="<?= base_url(); ?>/UserController/editsupp/<?= $supp['id_supp']; ?>"><button type="button" class="btn btn-warning"><i class="fas fa-edit"></i></button></a>
-                                                    <a href="<?= base_url(); ?>/userController/deletesupp/<?= $supp['id_supp']; ?>"><button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button></a>
-                                                </td>
-                                            </tr>
-                                        <?php endforeach; ?>
-                                    </tbody>
-                                </table>
+                                <div class="row">
+                                    <div class="col">
+                                        <form action="<?= base_url(); ?>/UserController/updatesupp/<?= $supplier['id_supp']; ?>" method="POST">
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label">Nama</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" name="nama_supp" id="nama_supp" value="<?= $supplier['nama_supp']; ?>">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label">Alamat</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" name="alamat" id="alamat" value="<?= $supplier['alamat']; ?>">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label">No Telp</label>
+                                                <div class="col-sm-10">
+                                                    <input type="number" class="form-control" name="notelp" id="notelp" value="<?= $supplier['notelp']; ?>">
+                                                </div>
+                                            </div>
+                                            <div class="justify-content-center">
+                                                <button type="submit" class="btn btn-success" style="text-align: center;"> Simpan <i class="fas fa-user-plus"></i></button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
                             <!-- /.card-body -->
-                            <div class="card-footer clearfix">
-                                <ul class="pagination pagination-sm m-0 float-right">
-                                    <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-                                </ul>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -169,67 +160,4 @@
     </footer>
 </div>
 <!-- ./wrapper -->
-
-<!-- modal tambah admin form -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col">
-                        <div class="card card-primary">
-                            <!-- card header -->
-                            <div class="card-header">
-                                <h3 class="card-title">Form Tambah Supplier</h3>
-                            </div>
-                            <!-- /.card-header -->
-                            <!-- card body -->
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <form action="<?= base_url(); ?>/userController/addusersupp" method="POST">
-                                            <input type="text" name="id_supp" id="id_supp" value="<?= $id_supp; ?>" hidden>
-                                            <div class="form-group row">
-                                                <label class="col-sm-2 col-form-label">Nama</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" class="form-control" name="nama_supp" id="nama_supp" placeholder="Masukan Nama">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-sm-2 col-form-label">Alamat</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" class="form-control" name="alamat" id="alamat" placeholder="Masukan Alamat">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="col-sm-2 col-form-label">No Telp</label>
-                                                <div class="col-sm-10">
-                                                    <input type="number" class="form-control" name="notelp" id="notelp" placeholder="Masukan No Telp">
-                                                </div>
-                                            </div>
-                                            <div class="justify-content-center">
-                                                <button type="submit" class="btn btn-success btn-block" style="text-align: center;"> Tambahkan Supplier <i class="fas fa-user-plus"></i></button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /.card-body -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- modal end -->
-
 <?= $this->endSection(); ?>

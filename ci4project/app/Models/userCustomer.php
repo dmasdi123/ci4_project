@@ -10,8 +10,11 @@ class userCustomer extends Model
     protected $primaryKey = 'id_cus';
     protected $allowedFields = ['id_cus', 'no_pol', 'nama_cus', 'telp', 'alamat_cus', 'merk', 'tipe'];
 
-    public function getDashboardCustomer()
+    public function getDashboardCustomer($idcust = null)
     {
-        return $this->findAll();
+        if ($idcust == false) {
+            return $this->findAll();
+        }
+        return $this->where(['id_cus' => $idcust])->first();
     }
 }

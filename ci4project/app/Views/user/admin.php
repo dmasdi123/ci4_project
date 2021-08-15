@@ -130,10 +130,8 @@
                         <td><?= $adm['notelp']; ?></td>
                         <td><?= $adm['role']; ?></td>
                         <td>
-                          <button type="button" class="btn btn-warning"><i class="fas fa-edit"></i></button>
-
-                          <a href="<?= base_url(); ?>/userController/deleteadm/<?= $adm['id_user']; ?>"><button name="iduser" type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button></a>
-
+                          <a href="<?= base_url(); ?>/UserController/editadmin/<?= $adm['id_user']; ?>"><button name="iduser" type="button" class="btn btn-warning"><i class="fas fa-edit"></i></button></a>
+                          <a href="<?= base_url(); ?>/UserController/deleteadm/<?= $adm['id_user']; ?>"><button name="iduser" type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button></a>
                         </td>
                       </tr>
                     <?php endforeach; ?>
@@ -228,7 +226,7 @@
                       <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Role</label>
                         <div class="col-sm-10">
-                          <input type="number" class="form-control" name="role" id="role" placeholder="Admin" value="admin" disabled>
+                          <input type="number" class="form-control" name="role" id="role" placeholder="Admin" value="admin">
                         </div>
                       </div>
                       <div class="justify-content-center">

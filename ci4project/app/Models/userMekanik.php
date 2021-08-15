@@ -11,9 +11,12 @@ class userMekanik extends Model
     protected $primaryKey = 'id_mekanik';
     protected $allowedFields = ['id_mekanik', 'nama_mekan', 'alamat', 'notelp'];
 
-    public function getDashboardMekanik()
+    public function getDashboardMekanik($idmekan = null)
     {
-        return $this->findAll();
+        if ($idmekan == false) {
+            return $this->findAll();
+        }
+        return $this->where(['id_mekanik' => $idmekan])->first();
     }
 
     public function getIdmekan()

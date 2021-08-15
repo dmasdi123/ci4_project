@@ -10,9 +10,12 @@ class userSupplier extends Model
     protected $primaryKey = 'id_supp';
     protected $allowedFields = ['id_supp', 'nama_supp', 'alamat', 'notelp'];
 
-    public function getDashboardSupplier()
+    public function getDashboardSupplier($idsupp = null)
     {
-        return $this->findAll();
+        if ($idsupp == false) {
+            return $this->findAll();
+        }
+        return $this->where(['id_supp' => $idsupp])->first();
     }
 
     public function getIdSupp()
