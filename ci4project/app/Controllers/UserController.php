@@ -105,6 +105,7 @@ class userController extends BaseController
         $this->usercustomer->insert([
             'no_pol' => $this->request->getVar('no_pol'),
             'nama_cus' => $this->request->getVar('nama_cus'),
+            'telp' => $this->request->getVar('telp'),
             'alamat_cus' => $this->request->getVar('alamat_cus'),
             'merk' => $this->request->getVar('merk'),
             'tipe' => $this->request->getVar('tipe')

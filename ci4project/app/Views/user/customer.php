@@ -115,6 +115,7 @@
                                             <th scope="col">No</th>
                                             <th scope="col">No Pol</th>
                                             <th scope="col">Nama</th>
+                                            <th scope="col">No Telp</th>
                                             <th scope="col">Alamat</th>
                                             <th scope="col">Merk</th>
                                             <th scope="col">Tipe</th>
@@ -128,6 +129,7 @@
                                                 <th scope="row"><?= $i++; ?></th>
                                                 <td><?= $cus['no_pol']; ?></td>
                                                 <td><?= $cus['nama_cus']; ?></td>
+                                                <td><?= $cus['telp']; ?></td>
                                                 <td><?= $cus['alamat_cus']; ?></td>
                                                 <td><?= $cus['merk']; ?></td>
                                                 <td><?= $cus['tipe']; ?></td>
@@ -205,6 +207,12 @@
                                                 <label class="col-sm-2 col-form-label">Nama</label>
                                                 <div class="col-sm-10">
                                                     <input type="text" class="form-control" id="nama_cus" name="nama_cus" placeholder="Masukan Nama">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label">No Telp</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" id="telp" name="telp" placeholder="Masukan No Telp">
                                                 </div>
                                             </div>
                                             <div class="form-group row">

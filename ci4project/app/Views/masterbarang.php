@@ -122,45 +122,22 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Knalpot Racing Scorpion</td>
-                      <td>5</td>
-                      <td>800.000</td>
-                      <td>1.000.000</td>
-                      <td>21 - 07 -2021</td>
-                      <td>PT Ban Production</td>
-                      <td>
-                        <button type="button" class="btn btn-warning"><i class="fas fa-edit"></i></button>
-                        <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Knalpot Racing Scorpion</td>
-                      <td>5</td>
-                      <td>800.000</td>
-                      <td>1.000.000</td>
-                      <td>21 - 07 -2021</td>
-                      <td>PT Ban Production</td>
-                      <td>
-                        <button type="button" class="btn btn-warning"><i class="fas fa-edit"></i></button>
-                        <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Knalpot Racing Scorpion</td>
-                      <td>5</td>
-                      <td>800.000</td>
-                      <td>1.000.000</td>
-                      <td>21 - 07 -2021</td>
-                      <td>PT Ban Production</td>
-                      <td>
-                        <button type="button" class="btn btn-warning"><i class="fas fa-edit"></i></button>
-                        <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
-                      </td>
-                    </tr>
+                    <?php $i = 1; ?>
+                    <?php foreach ($master_barang as $mb) : ?>
+                      <tr>
+                        <th scope="row"><?= $i++; ?></th>
+                        <td><?= $mb['nama_barang']; ?></td>
+                        <td><?= $mb['qty']; ?></td>
+                        <td><?= $mb['harga_jual']; ?></td>
+                        <td><?= $mb['harga_beli']; ?></td>
+                        <td><?= $mb['created_at']; ?></td>
+                        <td>Dimas</td>
+                        <td>
+                          <button type="button" class="btn btn-warning"><i class="fas fa-edit"></i></button>
+                          <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                        </td>
+                      </tr>
+                    <?php endforeach; ?>
                   </tbody>
                 </table>
               </div>
@@ -221,31 +198,31 @@
                       <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Nama Barang</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" placeholder="Masukan Nama Barang">
+                          <input type="text" class="form-control" id="nama_barang" name="nama_barang" placeholder="Masukan Nama Barang">
                         </div>
                       </div>
                       <div class="form-group row">
                         <label class="col-sm-2 col-form-label">QTY</label>
                         <div class="col-sm-10">
-                          <input type="number" class="form-control" placeholder="Masukan QTY">
+                          <input type="number" class="form-control" id="qty" name="qty" placeholder="Masukan QTY">
                         </div>
                       </div>
                       <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Harga Beli</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" placeholder="Masukan Harga Beli">
+                          <input type="text" class="form-control" id="harga_beli" name="harga_beli" placeholder="Masukan Harga Beli">
                         </div>
                       </div>
                       <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Harga Jual</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" placeholder="Masukan Harga Jual">
+                          <input type="text" class="form-control" id="harga_jual" name="harga_jual" placeholder="Masukan Harga Jual">
                         </div>
                       </div>
                       <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Tanggal Beli</label>
                         <div class="col-sm-10">
-                          <input type="date" class="form-control" placeholder="Masukan Tanggal beli">
+                          <input type="date" class="form-control" placeholder="Masukan Tanggal beli" disabled>
                         </div>
                       </div>
                       <div class="form-group row">
