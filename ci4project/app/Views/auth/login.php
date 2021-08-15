@@ -27,9 +27,9 @@
                         <a href="#" class="h1 mt-1"><b>Bengkel Jaya</b></a>
                     </div>
                     <div class="card-body">
-                        <form action="/dashboard" method="post">
+                        <form action="<?= base_url(); ?>/Auth/do_login" method="post">
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Username">
+                                <input type="text" id="username" name="username" class="form-control" placeholder="Username">
                                 <div class="input-group-append">
                                     <div class="input-group-text">
                                         <span class="fas fa-user"></span>
@@ -37,7 +37,7 @@
                                 </div>
                             </div>
                             <div class="input-group mb-3">
-                                <input type="password" class="form-control" placeholder="Password">
+                                <input type="password" id="password" name="password" class="form-control" placeholder="Password">
                                 <div class="input-group-append">
                                     <div class="input-group-text">
                                         <span class="fas fa-lock"></span>

@@ -6,13 +6,15 @@ use CodeIgniter\Model;
 
 class authModel extends Model
 {
-    public function getDataLogin()
+    protected $table = 'user';
+    protected $allowedFields = ['id_user', 'username', 'password', 'nama_user', 'alamat', 'notelp', 'role'];
+    public function getDataLogin($getusername, $getpassword)
     {
-        echo 'hello';
+        return $this->db->table('user')->where(array('username' => $getusername, 'password' => $getpassword))->get()->getRowArray();
     }
 
-    public function getDataRegister()
-    {
-        echo 'hello';
-    }
+    // public function getDataRegister()
+    // {
+    //     echo 'hello';
+    // }
 }
