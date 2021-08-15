@@ -193,6 +193,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <form action="<?= base_url(); ?>/userController/addusersupp" method="POST">
+                                            <input type="text" name="id_supp" id="id_supp" value="<?= $id_supp; ?>" hidden>
                                             <div class="form-group row">
                                                 <label class="col-sm-2 col-form-label">Nama</label>
                                                 <div class="col-sm-10">

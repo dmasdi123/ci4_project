@@ -14,4 +14,13 @@ class userSupplier extends Model
     {
         return $this->findAll();
     }
+
+    public function getIdSupp()
+    {
+        $id = $this->selectMax('id_supp')->findAll();
+        foreach ($id as $key) {
+            $id_supp = $key['id_supp'] + 1;
+        }
+        return $id_supp;
+    }
 }

@@ -65,7 +65,8 @@ class userController extends BaseController
     {
         $data = [
             'title' => 'Data Supplier - Bengkel Jaya Motor',
-            'supplier' => $this->usersupplier->getDashboardSupplier()
+            'supplier' => $this->usersupplier->getDashboardSupplier(),
+            'id_supp' => $this->usersupplier->getIdSupp()
         ];
         return view('user/supplier.php', $data);
     }
@@ -73,6 +74,7 @@ class userController extends BaseController
     public function addusersupp()
     {
         $this->usersupplier->insert([
+            'id_supp' => $this->usersupplier->getIdSupp(),
             'nama_supp' => $this->request->getVar('nama_supp'),
             'alamat' => $this->request->getVar('alamat'),
             'notelp' => $this->request->getVar('notelp')
