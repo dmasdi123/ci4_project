@@ -8,6 +8,8 @@ class masterbarang extends Model
 {
     protected $table = 'master_barang';
     protected $primaryKey = 'id_barang';
+    protected $useTimestamps = true;
+    protected $allowedFields = ['id_barang', 'nama_barang', 'qty', 'harga_beli', 'harga_jual'];
 
     public function getallItems()
     {

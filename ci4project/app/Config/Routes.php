@@ -42,8 +42,15 @@ $routes->get('/user/admin', 'UserController::userAdmin');
 $routes->get('/user/supplier', 'UserController::userSupplier');
 $routes->get('/user/customer', 'UserController::userCustomer');
 $routes->get('/user/mekanik', 'UserController::userMekanik');
-$routes->get('/', 'Auth::login');
-$routes->get('/auth/register', 'Auth::register');
+$routes->get('/user/editadmin/(:num)', 'UserController::editadmin/$1');
+$routes->get('/user/editsupplier/(:num)', 'UserController::editsupp/$1');
+$routes->get('/user/editcustomer/(:num)', 'UserController::editcust/$1');
+$routes->get('/user/editmekanik/(:num)', 'UserController::editmekan/$1');
+$routes->get('/user/editsupplier', 'UserController::editsupplier');
+$routes->get('/user/editcustomer', 'UserController::editcustomer');
+$routes->get('/user/editmekanik', 'UserController::editmekanik');
+$routes->get('/auth/login', 'Auth::login');
+// $routes->get('/auth/register', 'Auth::register');
 
 
 /*

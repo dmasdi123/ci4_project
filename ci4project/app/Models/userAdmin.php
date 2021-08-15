@@ -12,9 +12,12 @@ class userAdmin extends Model
     // protected $useTimestamps = true;
     protected $allowedFields = ['id_user', 'username', 'password', 'nama_user', 'alamat', 'notelp', 'role'];
 
-    public function getDashboardAdmin()
+    public function getDashboardAdmin($iduser = false)
     {
-        return $this->findAll();
+        if ($iduser == false) {
+            return $this->findAll();
+        }
+        return $this->where(['id_user' => $iduser])->first();
     }
 
     public function showAdmbyId($id)
