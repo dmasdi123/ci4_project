@@ -131,10 +131,10 @@
                         <td><?= $mb['harga_jual']; ?></td>
                         <td><?= $mb['harga_beli']; ?></td>
                         <td><?= $mb['created_at']; ?></td>
-                        <td>Dimas</td>
+                        <td><?= $mb['nama_supp']; ?></td>
                         <td>
-                          <button type="button" class="btn btn-warning"><i class="fas fa-edit"></i></button>
-                          <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                          <a href="<?= base_url(); ?>/masterbarang/editmb/<?= $mb['id_barang']; ?>"><button type="button" class="btn btn-warning"><i class="fas fa-edit"></i></button></a>
+                          <a href="<?= base_url(); ?>/masterbarang/deletemb/<?= $mb['id_barang']; ?>"><button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button></a>
                         </td>
                       </tr>
                     <?php endforeach; ?>
@@ -194,7 +194,8 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col">
-                    <form action="" method="POST">
+                    <form action="<?= base_url(); ?>/masterbarang/addmasterbarang" method="POST">
+                      <input type="text" id="id_user" name="id_user" value="<?= session()->get('id_adm'); ?>" hidden>
                       <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Nama Barang</label>
                         <div class="col-sm-10">
@@ -228,11 +229,16 @@
                       <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Nama Supplier</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" placeholder="Masukan Nama Supplier">
+                          <select class="custom-select" id="id_supp" name="id_supp">
+                            <option selected disabled>Nama Supplier</option>
+                            <?php foreach ($supplier as $supp) : ?>
+                              <option id="id_supp" name="id_supp" value="<?= $supp['id_supp']; ?>"><?= $supp['id_supp']; ?></option>
+                            <?php endforeach; ?>
+                          </select>
                         </div>
                       </div>
                       <div class="justify-content-center">
-                        <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#exampleModal" style="text-align: center;"> Tambahkan Mekanik <i class="fas fa-plus-square ml-1"></i></button>
+                        <button type="submit" class="btn btn-success btn-block" data-toggle="modal" data-target="#exampleModal" style="text-align: center;"> Tambahkan Mekanik <i class="fas fa-plus-square ml-1"></i></button>
                       </div>
                     </form>
                   </div>

@@ -22,11 +22,16 @@ class Auth extends BaseController
         return view('auth/login');
     }
 
-    public function do_login($getusername, $getpassword)
+    public function do_login()
     {
 
+        $getusername = $this->request->getVar('username');
+        $getpassword = $this->request->getVar('password');
+
         $cek = $this->authmodel->getDataLogin($getusername, $getpassword);
-        if ($cek) {
+
+
+        if (($cek['username'] == $getusername) && ($cek['password'] == $getpassword)) {
             session()->set('id_adm', $cek['id_user']);
             session()->set('username', $cek['username']);
             session()->set('password', $cek['password']);
@@ -38,51 +43,6 @@ class Auth extends BaseController
         } else {
             return redirect()->to('/auth/login');
         }
-
-        // $getusername = $this->request->getVar('username');
-        // $getpassword = $this->request->getVar('password');
-        // $cek = $this->authmodel->getDataLogin();
-        // $data = $this->authmodel->where('username', $getusername)->first();
-
-        // if ($data) {
-        //     $pass = $data['password'];
-        //     $verify_pass = password_verify($getpassword, $pass);
-        //     if ($verify_pass) {
-        //         session()->set('id_adm', $cek['id_user']);
-        //         session()->set('username', $cek['username']);
-        //         session()->set('password', $cek['password']);
-        //         session()->set('nama_user', $cek['nama_user']);
-        //         session()->set('alamat', $cek['alamat']);
-        //         session()->set('notelp', $cek['notelp']);
-        //         session()->set('role', $cek['role']);
-        //         return redirect()->to('/dashboard');
-        //     } else {
-        //         return redirect()->to('/auth/login');
-        //     }
-        // } else {
-        //     return redirect()->to('/auth/login');
-        // }
-
-        // $getusername = $this->request->getVar('username');
-        // $getpassword = $this->request->getVar('password');
-
-        // $cek = $this->authmodel->getDataLogin();
-
-
-        // if (($cek['username'] == $getusername) && ($cek['password'] == $getpassword)) {
-
-
-        //     session()->set('id_adm', $cek['id_user']);
-        //     session()->set('username', $cek['username']);
-        //     session()->set('password', $cek['password']);
-        //     session()->set('nama_user', $cek['nama_user']);
-        //     session()->set('alamat', $cek['alamat']);
-        //     session()->set('notelp', $cek['notelp']);
-        //     session()->set('role', $cek['role']);
-        //     return redirect()->to('/dashboard');
-        // } else {
-        //     return redirect()->to('/auth/login');
-        // }
     }
 
     public function logout()

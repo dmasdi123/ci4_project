@@ -10,7 +10,7 @@ class userSupplier extends Model
     protected $primaryKey = 'id_supp';
     protected $allowedFields = ['id_supp', 'nama_supp', 'alamat', 'notelp'];
 
-    public function getDashboardSupplier($idsupp = null)
+    public function getDashboardSupplier($idsupp = false)
     {
         if ($idsupp == false) {
             return $this->findAll();

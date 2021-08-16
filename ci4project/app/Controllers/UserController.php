@@ -150,6 +150,7 @@ class userController extends BaseController
         $result = $this->usercustomer->showCustbyId($id); //input value dari ajax ke model
         return json_encode($result);
     }
+
     public function addcustomer()
     {
         $this->usercustomer->insert([
