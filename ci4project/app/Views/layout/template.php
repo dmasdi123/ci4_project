@@ -42,6 +42,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         $("#penjualan").css("display", "none");
         $(".tbl_pj").css("display", "none");
         $("#btnpj").css("display", "none");
+        $(".input_buy").css("display", "none");
         $('#pilih_trx').on('change', function() {
             if (this.value == 0) { //service
                 $("#penjualan").css("display", "none");
@@ -83,8 +84,30 @@ scratch. This page gets rid of all links and provides the needed markup only.
             })
         })
     </script>
+    <!-- add nama barang dari modal ke inputan service-->
+    <script>
+        $(".addbrg_srv").click(function(e) {
+            e.preventDefault();
+            $.ajax({
+                type: "GET",
+                url: $(this).attr('href'), //data dikirim dari a href
+                dataType: "JSON",
+                success: function(result) {
+                    for (var i = 0; i < result.length; i++) {
+                        $("#barang_service").val(result[i].nama_barang);
+                        $("#harga_service").val(result[i].harga_jual);
+                        $("#id_brgservice").val(result[i].id_barang);
 
-    <!-- input name user  -->
+                    }
+                },
+                error: function(xhr, ajaxOptions, thrownError) { // Ketika ada error
+                    alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError); // Munculkan alert error
+                }
+            })
+        })
+    </script>
+
+    <!-- input name user penjualan  -->
     <script>
         $("#cust").keyup(function() {
             var inv = $(this).val();
@@ -101,6 +124,38 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         $("#telppj").val(result[i].telp);
                         $("#alamat").val(result[i].alamat_cus);
                         $("#idcust").val(result[i].id_cus);
+
+                    }
+
+                },
+                error: function(xhr, ajaxOptions, thrownError) { // Ketika ada error
+                    alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError); // Munculkan alert error
+                }
+            });
+
+
+        })
+    </script>
+    <!-- input name user service  -->
+    <script>
+        $("#customer").keyup(function() {
+            var inv = $(this).val();
+            $.ajax({
+                type: 'POST',
+                url: '<?= base_url(); ?>/UserController/showcust',
+                dataType: "JSON",
+                data: {
+                    id: inv
+                },
+                success: function(result) {
+                    for (var i = 0; i < result.length; i++) {
+                        // console.log(result[i].telp)
+                        $("#idpelanggan").val(result[i].id_cus);
+                        $("#telp_srv").val(result[i].telp);
+                        $("#alamat_srv").val(result[i].alamat_cus);
+                        $("#nopol_srv").val(result[i].no_pol);
+                        $("#merk_srv").val(result[i].merk);
+                        $("#tipe_srv").val(result[i].tipe);
 
                     }
 
@@ -131,6 +186,27 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 error: function(xhr, ajaxOptions, thrownError) { // Ketika ada error
                     // alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError); // Munculkan alert error
                     alert("input dulu customernya :)")
+                }
+            })
+        })
+    </script>
+    <!-- crud service into db transaksi -->
+    <script>
+        $("#btntambah_srv").click(function(e) {
+            e.preventDefault();
+            $.ajax({
+                type: "POST",
+                url: '<?= base_url(); ?>/transaksi/insertSRV',
+                data: $("#form_service").serialize(), //ambil semua data di dalam form
+                success: function() {
+                    loadlistsrv();
+                    $('#barang_service').val('');
+                    $('#qty_service').val('');
+                    $('#harga_service').val('');
+                },
+                error: function(xhr, ajaxOptions, thrownError) { // Ketika ada error
+                    // alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError); // Munculkan alert error
+                    alert("pastikan nama customer / mekanik valid!!")
                 }
             })
         })
@@ -188,6 +264,58 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         }
     </script>
+    <!-- load list service -->
+    <script>
+        function loadlistsrv() {
+            $.ajax({
+                    type: "POST",
+                    url: '<?= base_url(); ?>/transaksi/showlistPJ',
+                    data: 'inv=' + $('input[name=invoicesrv]').val(),
+                    dataType: "JSON",
+                    success: function(result) {
+                        var html = '';
+                        for (var i = 0; i < result.length; i++) {
+                            var no = parseInt(i);
+                            no++;
+                            var total = result[i].qty_trx * result[i].harga_trx;
+                            html += '<tr>' +
+                                '<td>' + no + '</td>' +
+                                '<td>' + result[i].nama_barang + '</td>' +
+                                '<td>' + result[i].qty_trx + '</td>' +
+                                '<td>' + total + '</td>' +
+                                '<td><a class="deletelistPJ" href="/transaksi/delete?id=' + result[i].id_trx + '"><button class="btn btn-danger" onclick="deletelistSRV()" type="button"><i class="fas fa-trash"></i></button></td>' +
+                                '</tr>';
+
+
+                        }
+                        $('#tbl_service').html(html);
+
+
+                    },
+                    error: function(xhr, ajaxOptions, thrownError) { // Ketika ada error
+                        alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError); // Munculkan alert error
+                    }
+
+
+                }),
+                $.ajax({
+                    type: 'POST',
+                    url: '<?= base_url(); ?>/transaksi/getSumPricePJ',
+                    dataType: "JSON",
+                    data: 'inv=' + $('input[name=invoicesrv]').val(),
+                    success: function(result) {
+                        for (var i = 0; i < result.length; i++) {
+                            $("#gtotal_srv").val(result[i].harga_totaltrx);
+
+                        }
+                    },
+                    error: function(xhr, ajaxOptions, thrownError) { // Ketika ada error
+                        alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError); // Munculkan alert error
+                    }
+                });
+
+        }
+    </script>
 
     <!-- delete item from load list penjualan -->
     <script>
@@ -200,6 +328,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     dataType: "JSON",
                     success: function() {
                         loadlistpj();
+                    },
+                    error: function(xhr, ajaxOptions, thrownError) { // Ketika ada error
+                        alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError); // Munculkan alert error
+                    }
+                })
+            })
+        }
+    </script>
+    <!-- delete item from load list service -->
+    <script>
+        function deletelistSRV() {
+            $(".deletelistPJ").click(function(e) {
+                e.preventDefault();
+                $.ajax({
+                    type: "GET",
+                    url: $(this).attr('href'), //data dikirim dari a href
+                    dataType: "JSON",
+                    success: function() {
+                        loadlistsrv();
                     },
                     error: function(xhr, ajaxOptions, thrownError) { // Ketika ada error
                         alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError); // Munculkan alert error
@@ -226,6 +373,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
             })
         })
     </script>
+    <!-- input nota service ke db nota -->
+    <script>
+        $("#btnservice").click(function(e) {
+            e.preventDefault();
+            $.ajax({
+                type: "POST",
+                url: '<?= base_url(); ?>/print_nota/insertnotaSRV',
+                data: $("#form_service").serialize(), //ambil semua data di dalam form
+                success: function() {
+                    modalshowSRV();
+                },
+                error: function(xhr, ajaxOptions, thrownError) { // Ketika ada error
+                    alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError); // Munculkan alert error
+                }
+            })
+        })
+    </script>
 
     <script>
         function modalshow() {
@@ -236,6 +400,27 @@ scratch. This page gets rid of all links and provides the needed markup only.
             myModal.show()
         }
     </script>
+    <script>
+        function modalshowSRV() {
+            var myModal = new bootstrap.Modal(document.getElementById('myModalService'), {
+                keyboard: false
+
+            })
+            myModal.show()
+        }
+    </script>
+    <!-- ################################################################################################################## -->
+    <!-- script untuk input pembelian -->
+    <!-- script toggle button input -->
+    <script>
+        $(".btn_buy").click(function(e) {
+            e.preventDefault();
+            // alert("oiii");
+            $(".input_buy").attr("style", "visibility: visible");
+
+        })
+    </script>
+    <!-- toggle end -->
 </body>
 
 </html>

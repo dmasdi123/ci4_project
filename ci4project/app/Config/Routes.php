@@ -35,6 +35,7 @@ $routes->get('/dashboard', 'dashboardUtama::dashboardutama');
 $routes->get('/transaksi/pembelian', 'transaksi::pembelian');
 $routes->get('/transaksi/service', 'transaksi::service');
 $routes->get('/print_nota', 'print_nota::invoice');
+$routes->get('/print_nota', 'print_nota::service');
 
 $routes->get('/master_barang', 'masterbarang::index');
 $routes->get('/user/admin', 'UserController::userAdmin');

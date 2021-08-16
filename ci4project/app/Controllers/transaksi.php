@@ -8,6 +8,7 @@ class transaksi extends BaseController
     protected $transaksi;
     protected $userAdmin;
     protected $masterbarang;
+    protected $mekanik;
 
     public function __construct()
     {
@@ -15,6 +16,7 @@ class transaksi extends BaseController
         $this->transaksi = new \App\Models\transaksi();
         $this->userAdmin = new \App\Models\userAdmin();
         $this->masterbarang = new \App\Models\masterbarang();
+        $this->mekanik = new \App\Models\userMekanik();
     }
 
     public function pembelian()
@@ -30,7 +32,8 @@ class transaksi extends BaseController
         $data = [
             'title' => 'Service - Bengkel Jaya Motor',
             'autoinvpj' => $this->notainv->getINV(),
-            'showbarang' => $this->masterbarang->getallItems()
+            'showbarang' => $this->masterbarang->getallItems(),
+            'showmekan' => $this->mekanik->getallMekanik()
 
         ];
         return view('service.php', $data);
@@ -53,14 +56,36 @@ class transaksi extends BaseController
         $grandtotal = $qty * $harga;
         $this->transaksi->insert([
             'id_barang' => $this->request->getVar('id_brgpj'),
-            // 'id_mekanik' => $this->request->getVar('password'),
             'id_user' => $this->request->getVar('id_kasir'),
             'id_cus' => $this->request->getVar('idcustpj'),
-            // 'id_nota' => $this->request->getVar('notelp'),
+            // 'id_nota' => $this->request->getVar('id_notapj'),
             'invoice' => $this->request->getVar('invoicePJ'),
             'qty_trx' => $this->request->getVar('qtypj'),
             'harga_trx' => $this->request->getVar('harga_jualpj'),
             'harga_totaltrx' => $grandtotal
+        ]);
+    }
+
+
+    // insert data service
+    public function insertSRV()
+    {
+        // dd($this->request->getVar());
+        $qty = $this->request->getVar('qty_srv');
+        $harga = $this->request->getVar('harga_jualsrv');
+        $grandtotal = $qty * $harga;
+        $this->transaksi->insert([
+            'id_barang' => $this->request->getVar('id_brgsrv'),
+            'id_mekanik' => $this->request->getVar('mekanik'),
+            'id_user' => $this->request->getVar('id_kasirsrv'),
+            'id_cus' => $this->request->getVar('idpelanggan'),
+            // 'id_nota' => $this->request->getVar('id_notaservice'),
+            'invoice' => $this->request->getVar('invoicesrv'),
+            'keluhan' => $this->request->getVar('keluhan'),
+            'qty_trx' => $this->request->getVar('qty_srv'),
+            'harga_trx' => $this->request->getVar('harga_jualsrv'),
+            'harga_totaltrx' => $grandtotal,
+            'km_datang' => $this->request->getVar('kmdtg'),
         ]);
     }
 

@@ -104,7 +104,7 @@
             <div class="card card-primary">
               <div class="card-header">
                 <button class="btn btn-dark" data-toggle="modal" data-target="#ModaldaftarTransaksi" style="float: right;">Daftar transaksi</button>
-                <h1 class="card-title" style="font-size: 160%;">Transaksi (Service)</h1>
+                <h1 class="card-title" style="font-size: 160%;">Transaksi</h1>
               </div>
               <div class="card-body">
                 <div class="row">
@@ -126,42 +126,47 @@
                     <div class="row">
                       <div class="col-md-4">
                         <label class="ml-1">Invoice</label>
-                        <input type="text" class="form-control mb-2" name="invoice" value="JL0000" readonly>
+                        <input type="text" class="form-control mb-2" name="invoicesrv" value="SRV/<?= date('Y'); ?>/<?= $autoinvpj; ?>" readonly>
                         <label class="ml-1">Kasir</label>
-                        <input type="text" class="form-control mb-2" name="invoice" value="admin" readonly>
+                        <input type="text" class="form-control mb-2" name="" value="<?= session()->get('nama_user') ?>" readonly>
+                        <input type="text" class="form-control" id="id_sm" name="id_kasirsrv" value="<?= session()->get('id_adm') ?>" hidden>
+                        <input type="text" class="form-control" id="id_sm" name="id_notaservice" value="<?= $autoinvpj; ?>" hidden>
                         <label class="ml-1">Mekanik</label>
-                        <select class="custom-select mb-2" id="mekanik">
-                          <option value="0">Pilih...</option>
-                          <option value="0">Mr. Simple</option>
-                          <option value="1">P. Sueb</option>
+                        <select class="custom-select mb-2" name="mekanik">
+                          <option value="">Pilih mekanik...</option>
+                          <?php foreach ($showmekan as $mekanik) : ?>
+                            <option value="<?= $mekanik['id_mekanik']; ?>"><?= $mekanik['nama_mekan']; ?></option>
+                          <?php endforeach; ?>
+
                         </select>
                         <label class="ml-1">Tanggal Input</label>
                         <input type="text" class="form-control mb-2" value="<?= date('d-m-Y'); ?>" disabled>
                       </div>
                       <div class="col-md-4">
                         <label class="ml-1">Customer</label>
-                        <input type="number" class="form-control mb-2" id="" name="notelp" placeholder="Ketik nama...">
+                        <input type="text" class="form-control mb-2" id="customer" name="notelp" placeholder="Ketik nama...">
+                        <input type="text" class="form-control mb-2" id="idpelanggan" name="idpelanggan" hidden>
                         <label class="ml-1">No Telp</label>
-                        <input type="number" class="form-control mb-2" id="" name="notelp" placeholder="Masukan No Telp">
+                        <input type="text" class="form-control mb-2" id="telp_srv" readonly>
                         <label class="ml-1">Alamat</label>
-                        <input type="text" class="form-control mb-2" id="" name="alamat" placeholder="Masukan Alamat">
+                        <input type="text" class="form-control mb-2" id="alamat_srv" readonly>
                         <label class="ml-1">No. Pol</label>
-                        <input type="text" class="form-control mb-2" id="" name="alamat" placeholder="Masukan Alamat">
+                        <input type="text" class="form-control mb-2" id="nopol_srv" readonly>
                       </div>
                       <div class="col-md-4">
                         <label class="ml-1">Merk</label>
-                        <input type="number" class="form-control mb-2" id="" name="notelp" placeholder="Ketik nama...">
+                        <input type="text" class="form-control mb-2" id="merk_srv" readonly>
                         <label class="ml-1">Tipe</label>
-                        <input type="number" class="form-control mb-2" id="" name="notelp" placeholder="Masukan No Telp">
+                        <input type="text" class="form-control mb-2" id="tipe_srv" readonly>
                         <label class="ml-1">K/m Datang</label>
-                        <input type="text" class="form-control mb-2" id="" name="alamat" placeholder="Masukan Alamat">
+                        <input type="text" class="form-control mb-2" id="kmdtg" name="kmdtg" placeholder="Masukan K/m">
                         <label class="ml-1">Keluhan</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <textarea class="form-control" rows="3" name="keluhan" placeholder="isi keluhan..."></textarea>
                       </div>
                     </div>
                     <div class="row mt-5">
                       <div class="col-md-8">
-                        <label>Nama Barang</label>
+                        <label>Spare Part</label>
                       </div>
                       <div class="col-md-1">
                         <label>Qty</label>
@@ -173,30 +178,30 @@
                     <div class="row">
                       <div class="col-md-8">
                         <div class="input-group">
-                          <input type="text" class="form-control" name="nama_brg" placeholder="Nama Barang" id="barang_service">
+                          <input type="text" class="form-control" name="nama_brgsrv" placeholder="Nama Barang" id="barang_service">
                           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalService">
                             Cari
                           </button>
                         </div>
                       </div>
                       <div class="col-1">
-                        <input type="number" class="form-control" name="qty" placeholder="Qty" id="qty_service">
+                        <input type="number" class="form-control" name="qty_srv" placeholder="Qty" id="qty_service">
                       </div>
                       <div class="col-3">
-                        <input type="number" class="form-control" name="harga_jual" placeholder="Harga" id="harga_service">
-                        <input type="number" class="form-control" name="id_brg" placeholder="Harga" id="id_brgservice" hidden>
-                        <input type="text" class="form-control" id="id_sm" name="id_sm" value="<?= session()->get('id_adm') ?>" hidden>
+                        <input type="number" class="form-control" name="harga_jualsrv" placeholder="Harga" id="harga_service">
+                        <input type="number" class="form-control" name="id_brgsrv" placeholder="Harga" id="id_brgservice" hidden>
+
                       </div>
                     </div>
                     <div class="row mt-5 mb-5">
                       <div class="col text-center">
-                        <button class="btn btn-primary btn-lg" type="submit" id="btntambah">Tambah</button>
+                        <button class="btn btn-primary btn-lg" type="submit" id="btntambah_srv">Tambah</button>
                       </div>
                     </div>
                   </div>
                   <div class="row mx-auto">
                     <div class="col mx-auto">
-                      <table class="table" id="tbl_service">
+                      <table class="table">
                         <thead>
                           <tr>
                             <th scope="col">No.</th>
@@ -205,26 +210,23 @@
                             <th scope="col">Harga (Rp.)</th>
                           </tr>
                         </thead>
-                        <tbody>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                          </tr>
+                        <tbody id="tbl_service">
+
                         </tbody>
+                        <tfoot>
+                          <tr>
+                            <td>
+
+                            </td>
+                            <td></td>
+                            <td>
+                              <h5 style="float: right;">Grand Total (Rp) :</h5 style="float: right;">
+                            </td>
+                            <td>
+                              <h5><input type="text" id="gtotal_srv" style="width:100%; border: none; pointer-events: none;"></h5>
+                            </td>
+                          </tr>
+                        </tfoot>
                       </table>
                     </div>
                   </div>
@@ -251,15 +253,16 @@
                         <input type="text" class="form-control mb-2" value="<?= session()->get('nama_user') ?>" readonly>
                         <label class="ml-1">Tanggal Input</label>
                         <input type="text" class="form-control mb-2" value="<?= date('d-m-Y'); ?>" disabled>
+                        <input type="text" class="form-control" id="id_sm" name="id_notapj" value="<?= $autoinvpj; ?>" hidden>
                       </div>
                       <div class="col-md-6">
                         <label class="ml-1">Customer</label>
                         <input type="text" class="form-control mb-2" id="cust" name="custpj" placeholder="Ketik nama...">
                         <input type="text" class="form-control mb-2" id="idcust" name="idcustpj" hidden>
                         <label class="ml-1">No Telp</label>
-                        <input type="text" class="form-control mb-2" id="telppj" name="notelppj" placeholder="Masukan No Telp">
+                        <input type="text" class="form-control mb-2" id="telppj" name="notelppj" readonly>
                         <label class="ml-1">Alamat</label>
-                        <input type="text" class="form-control mb-2" id="alamat" name="alamatpj" placeholder="Masukan Alamat">
+                        <input type="text" class="form-control mb-2" id="alamat" name="alamatpj" readonly>
 
                       </div>
                     </div>
@@ -341,74 +344,10 @@
             </div>
           </div>
         </div>
-
-        <!-- modal data penjualan -->
-        <div class="modal fade" id="exampleModalPenjualan" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h3 class="modal-title" id="exampleModalLongTitle">Daftar Barang</h3>
-              </div>
-              <div class="modal-body">
-                <div class="row">
-                  <div class="col">
-                    <table class="table table-bordered table-responsive-sm" id="tbl-barang">
-                      <thead class="thead-dark text-center">
-                        <tr>
-                          <th scope="col">Kode</th>
-                          <th scope="col">Barang</th>
-                          <th scope="col">Qty</th>
-                          <th scope="col">Buy</th>
-                          <th scope="col">Sell</th>
-                          <th scope="col">Aksi</th>
-                        </tr>
-                      </thead>
-                      <tbody id="show-brg-data">
-                        <?php foreach ($showbarang as $show) : ?>
-                          <td class="text-center"><?= $show['id_barang']; ?></td>
-                          <td class="text-center"><?= $show['nama_barang']; ?></td>
-                          <td class="text-center"><?= $show['qty']; ?></td>
-                          <td class="text-center"><?= $show['harga_beli']; ?></td>
-                          <td class="text-center"><?= $show['harga_jual']; ?></td>
-                          <td class="text-center"><a class="addbrg" href="/transaksi/add?id=<?= $show['id_barang']; ?>"><button data-dismiss="modal" class="btn btn-primary"><i class="fas fa-plus"></i></button></a></td>
-                        <?php endforeach; ?>
-
-                      </tbody>
-                    </table>
-
-                  </div>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-warning" data-dismiss="modal" onclick="redirect();">Close</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- modal end -->
-        <!-- modal print -->
-        <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Cetak Nota ?</h5>
-
-              </div>
-              <div class="modal-body">
-                <div class="print" style="margin-left:27%;">
-                  <img src="/adminlte_asset/asset/img/print.gif" alt="print">
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="location.href='/transaksi/service'">Close</button>
-                <a href="/print_nota/invoice?id=INV/<?= date('Y'); ?>/<?= $autoinvpj; ?>" target="_blank"><button type="submit" class="btn btn-primary">Print</button></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- end print -->
         <!-- table daftar penjualan       -->
-
+        <!-- modal -->
+        <?= $this->include('layout/modal'); ?>
+        <!-- end modal -->
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->

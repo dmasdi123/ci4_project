@@ -27,4 +27,9 @@ class userMekanik extends Model
         }
         return $id_mekan;
     }
+
+    public function getallMekanik()
+    {
+        return $this->select('*')->findAll();
+    }
 }

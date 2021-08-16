@@ -26,6 +26,13 @@ class print_nota extends BaseController
         ]);
     }
 
+    public function insertnotaSRV()
+    {
+        $this->notainv->insert([
+            'inv_nota' => $this->request->getVar('invoicesrv')
+        ]);
+    }
+
     public function invoice()
     {
         $inv = $this->request->getVar('id');
@@ -35,6 +42,24 @@ class print_nota extends BaseController
         $admin = $this->admin->showAdmbyId($inv);
         $data = [
             'title' => 'Print - Bengkel Jaya Motor',
+            'detail' => $show_nota,
+            'gtotal' => $jumlah_trx,
+            'cust' => $show_cust,
+            'adm' => $admin
+        ];
+        return view('print_nota.php', $data);
+    }
+
+    public function service()
+    {
+        $inv = $this->request->getVar('id');
+        $show_nota = $this->transaksi->getTrxByINV($inv);
+        $jumlah_trx = $this->transaksi->showPricePJ($inv);
+        $show_cust = $this->customer->showCustbyId2($inv);
+        $admin = $this->admin->showAdmbyId($inv);
+        $data = [
+            'title' => 'Print - Bengkel Jaya Motor',
+            'cust' => $show_cust,
             'detail' => $show_nota,
             'gtotal' => $jumlah_trx,
             'cust' => $show_cust,

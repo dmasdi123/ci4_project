@@ -102,8 +102,8 @@
       <div class="container-fluid">
         <div class="row mx-auto">
           <div class="col mx-auto">
-            <button class="btn btn-primary mb-3"><i class="fas fa-plus-circle mr-2"></i>Tambah Transaksi </button>
-            <div class="card card-primary" style="display: none;">
+            <button class="btn btn-primary mb-3 btn_buy"><i class="fas fa-plus-circle mr-2" id="btn_buy" onclick="toogleinput()"></i>Tambah Transaksi </button>
+            <div class="card card-primary input_buy">
               <div class="card-header">
                 <h2 class="card-title">Input Pembelian</h2>
               </div>
