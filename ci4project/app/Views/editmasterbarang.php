@@ -89,7 +89,7 @@
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
                             <li class="breadcrumb-item">User</li>
-                            <li class="breadcrumb-item active"> Form Edit Supplier</li>
+                            <li class="breadcrumb-item active"> Form Edit Master Barang</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -105,35 +105,59 @@
                         <div class="card card-primary">
                             <!-- card header -->
                             <div class="card-header">
-                                <h3 class="card-title">Form Edit Supplier</h3>
+                                <h3 class="card-title">Form Edit Master Barang</h3>
                             </div>
                             <!-- /.card-header -->
                             <!-- card body -->
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <form action="<?= base_url(); ?>/UserController/updatesupp/<?= $supplier['id_supp']; ?>" method="POST">
+                                        <form action="<?= base_url(); ?>/masterbarang/updatemb/<?= $mb['id_barang']; ?>" method="POST">
                                             <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>">
+                                            <input type="text" id="id_user" name="id_user" value="<?= $mb['id_user']; ?>" hidden>
                                             <div class="form-group row">
-                                                <label class="col-sm-2 col-form-label">Nama</label>
+                                                <label class="col-sm-2 col-form-label">Nama Barang</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" class="form-control" name="nama_supp" id="nama_supp" value="<?= $supplier['nama_supp']; ?>">
+                                                    <input type="text" class="form-control" id="nama_barang" name="nama_barang" value="<?= $mb['nama_barang']; ?>">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-sm-2 col-form-label">Alamat</label>
+                                                <label class="col-sm-2 col-form-label">QTY</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" class="form-control" name="alamat" id="alamat" value="<?= $supplier['alamat']; ?>">
+                                                    <input type="number" class="form-control" id="qty" name="qty" value="<?= $mb['qty']; ?>">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-sm-2 col-form-label">No Telp</label>
+                                                <label class="col-sm-2 col-form-label">Harga Beli</label>
                                                 <div class="col-sm-10">
-                                                    <input type="number" class="form-control" name="notelp" id="notelp" value="<?= $supplier['notelp']; ?>">
+                                                    <input type="text" class="form-control" id="harga_beli" name="harga_beli" value="<?= $mb['harga_beli']; ?>">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label">Harga Jual</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" id="harga_jual" name="harga_jual" value="<?= $mb['harga_jual']; ?>">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label">Tanggal Beli</label>
+                                                <div class="col-sm-10">
+                                                    <input type="date" class="form-control" disabled>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-sm-2 col-form-label">Nama Supplier</label>
+                                                <div class="col-sm-10">
+                                                    <select class="custom-select" id="id_supp" name="id_supp">
+                                                        <option selected disabled><?= $mb['id_supp']; ?></option>
+                                                        <?php foreach ($supplier as $supp) : ?>
+                                                            <option id="id_supp" name="id_supp" value="<?= $supp['id_supp']; ?>"><?= $supp['nama_supp']; ?></option>
+                                                        <?php endforeach; ?>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="justify-content-center">
-                                                <button type="submit" class="btn btn-success" style="text-align: center;"> Simpan <i class="fas fa-user-plus"></i></button>
+                                                <button type="submit" class="btn btn-success btn-block" data-toggle="modal" data-target="#exampleModal" style="text-align: center;"> Tambahkan Mekanik <i class="fas fa-plus-square ml-1"></i></button>
                                             </div>
                                         </form>
                                     </div>

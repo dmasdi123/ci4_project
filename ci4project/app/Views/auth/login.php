@@ -25,7 +25,17 @@
                     <div class="card-header">
                         <img src="<?= base_url(); ?>/adminlte_asset/asset/img/gambar bengkel.png" style="width: 20%;">
                         <a href="#" class="h1 mt-1"><b>Bengkel Jaya</b></a>
+                        <?php if (session()->getFlashData('pesan')) :  ?>
+                            <p>
+                                <?= session()->getFlashData('pesan'); ?>
+                            </p>
+                        <?php endif; ?>
                     </div>
+                    <?php if (session()->getFlashData('pesan')) :  ?>
+                        <p>
+                            <?= session()->getFlashData('pesan'); ?>
+                        </p>
+                    <?php endif; ?>
                     <div class="card-body">
                         <form action="<?= base_url(); ?>/Auth/do_login" method="post">
                             <div class="input-group mb-3">

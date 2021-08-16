@@ -187,12 +187,26 @@
               <div class="card-header">
                 <h3 class="card-title">Form Tambah Admin</h3>
               </div>
+              <?php if (session()->getFlashData('pesan')) :  ?>
+                <div class="alert alert-success" role="alert">
+                  <?= session()->getFlashData('pesan'); ?>
+                </div>
+              <?php elseif (session()->getFlashData('pesan2')) :  ?>
+                <div class="alert alert-success" role="alert">
+                  <?= session()->getFlashData('pesan2'); ?>
+                </div>
+              <?php elseif (session()->getFlashData('pesan3')) :  ?>
+                <div class="alert alert-success" role="alert">
+                  <?= session()->getFlashData('pesan3'); ?>
+                </div>
+              <?php endif; ?>
               <!-- /.card-header -->
               <!-- card body -->
               <div class="card-body">
                 <div class="row">
                   <div class="col">
                     <form action="<?= base_url(); ?>/userController/adduseradm" method="POST">
+                      <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>">
                       <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Username</label>
                         <div class="col-sm-10">

@@ -197,6 +197,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <form action="<?= base_url(); ?>/UserController/addcustomer" method="POST">
+                                            <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>">
                                             <div class="form-group row">
                                                 <label class="col-sm-2 col-form-label">No Polisi</label>
                                                 <div class="col-sm-10">
