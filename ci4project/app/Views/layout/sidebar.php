@@ -10,14 +10,7 @@
                 </p>
             </a>
         </li>
-        <li class="nav-item">
-            <a href="/master_barang" class="nav-link">
-                <i class="fas fa-box-open nav-icon"></i>
-                <p>
-                    Master Barang
-                </p>
-            </a>
-        </li>
+
         <li class="nav-item">
             <a href="#" class="nav-link">
                 <i class="fas fa-clipboard-list nav-icon"></i>
@@ -28,9 +21,11 @@
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="/transaksi/pembelian" class="nav-link">
-                        <i class="fas fa-shopping-cart nav-icon"></i>
-                        <p>Pembelian</p>
+                    <a href="/master_barang" class="nav-link">
+                        <i class="fas fa-box-open nav-icon"></i>
+                        <p>
+                            Master Barang
+                        </p>
                     </a>
                 </li>
                 <li class="nav-item">

@@ -151,7 +151,7 @@
                                                     <select class="custom-select" id="id_supp" name="id_supp">
                                                         <option selected disabled><?= $mb['id_supp']; ?></option>
                                                         <?php foreach ($supplier as $supp) : ?>
-                                                            <option id="id_supp" name="id_supp" value="<?= $supp['id_supp']; ?>"><?= $supp['id_supp']; ?></option>
+                                                            <option id="id_supp" name="id_supp" value="<?= $supp['id_supp']; ?>"><?= $supp['nama_supp']; ?></option>
                                                         <?php endforeach; ?>
                                                     </select>
                                                 </div>
