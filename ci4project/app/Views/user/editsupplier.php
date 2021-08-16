@@ -105,7 +105,7 @@
                         <div class="card card-primary">
                             <!-- card header -->
                             <div class="card-header">
-                                <h3 class="card-title">Form Tambah Admin</h3>
+                                <h3 class="card-title">Form Edit Supplier</h3>
                             </div>
                             <!-- /.card-header -->
                             <!-- card body -->
@@ -113,6 +113,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <form action="<?= base_url(); ?>/UserController/updatesupp/<?= $supplier['id_supp']; ?>" method="POST">
+                                            <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>">
                                             <div class="form-group row">
                                                 <label class="col-sm-2 col-form-label">Nama</label>
                                                 <div class="col-sm-10">

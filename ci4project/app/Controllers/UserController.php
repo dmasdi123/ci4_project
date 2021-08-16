@@ -51,12 +51,14 @@ class userController extends BaseController
             'role' => $this->request->getVar('role')
         ]);
 
+        session()->setFlashData('pesan', 'Data Berhasil Ditambahkan');
         return redirect()->to('user/admin');
     }
 
     public function deleteadm($iduser = null)
     {
         $this->useradmin->delete($iduser);
+        session()->setFlashData('pesan3', 'Data Berhasil Dihapus');
         return redirect()->to('user/admin');
     }
 
@@ -78,6 +80,8 @@ class userController extends BaseController
             'notelp' => $this->request->getVar('notelp'),
             'role' => $this->request->getVar('role')
         ]);
+
+        session()->setFlashData('pesan2', 'Data Berhasil Diubah');
         return redirect()->to('/user/admin');
         // dd($this->request->getVar());
     }
@@ -104,12 +108,15 @@ class userController extends BaseController
             'alamat' => $this->request->getVar('alamat'),
             'notelp' => $this->request->getVar('notelp')
         ]);
+
+        session()->setFlashData('pesan', 'Data Berhasil Ditambahkan');
         return redirect()->to('user/supplier');
     }
 
     public function deletesupp($idsupp = null)
     {
         $this->usersupplier->delete($idsupp);
+        session()->setFlashData('pesan3', 'Data Berhasil Dihapus');
         return redirect()->to('user/supplier');
     }
 
@@ -130,6 +137,8 @@ class userController extends BaseController
             'alamat' => $this->request->getVar('alamat'),
             'notelp' => $this->request->getVar('notelp')
         ]);
+
+        session()->setFlashData('pesan2', 'Data Berhasil Diubah');
         return redirect()->to('/user/supplier');
     }
     // controller untuk supplier end --------------------------------------------------------------------
@@ -161,12 +170,15 @@ class userController extends BaseController
             'merk' => $this->request->getVar('merk'),
             'tipe' => $this->request->getVar('tipe')
         ]);
+
+        session()->setFlashData('pesan', 'Data Berhasil Ditambahkan');
         return redirect()->to('/user/customer');
     }
 
     public function deletecus($idcus = null)
     {
         $this->usercustomer->delete($idcus);
+        session()->setFlashData('pesan3', 'Data Berhasil Dihapus');
         return redirect()->to('/user/customer');
     }
 
@@ -191,6 +203,8 @@ class userController extends BaseController
             'tipe' => $this->request->getVar('tipe')
 
         ]);
+
+        session()->setFlashData('pesan2', 'Data Berhasil Diubah');
         return redirect()->to('/user/customer');
     }
     // controller untuk customer end -------------------------------------------------------------------
@@ -214,12 +228,15 @@ class userController extends BaseController
             'alamat' => $this->request->getVar('alamat'),
             'notelp' => $this->request->getVar('notelp')
         ]);
+
+        session()->setFlashData('pesan', 'Data Berhasil Ditambahkan');
         return redirect()->to('user/mekanik');
     }
 
     public function deletemekan($idmekan = null)
     {
         $this->usermekanik->delete($idmekan);
+        session()->setFlashData('pesan3', 'Data Berhasil Dihapus');
         return redirect()->to('/user/mekanik');
     }
 
@@ -232,17 +249,22 @@ class userController extends BaseController
         return view('/user/editmekanik', $data);
     }
 
+
+
     public function updatemekan($idmekan)
     {
         $this->usermekanik->save([
-            'id_cus' => $idmekan,
+            'id_mekanik' => $idmekan,
             'nama_mekan' => $this->request->getVar('nama_mekan'),
             'alamat' => $this->request->getVar('alamat'),
             'notelp' => $this->request->getVar('notelp')
 
 
         ]);
+
+        session()->setFlashData('pesan2', 'Data Berhasil Diubah');
         return redirect()->to('/user/mekanik');
     }
+
     // controller untuk mekanik end ------------------------------------------------------------------
 }

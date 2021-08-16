@@ -195,6 +195,7 @@
                 <div class="row">
                   <div class="col">
                     <form action="<?= base_url(); ?>/masterbarang/addmasterbarang" method="POST">
+                      <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>">
                       <input type="text" id="id_user" name="id_user" value="<?= session()->get('id_adm'); ?>" hidden>
                       <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Nama Barang</label>

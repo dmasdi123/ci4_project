@@ -191,6 +191,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <form action="<?= base_url(); ?>/UserController/addmekanik" method="POST">
+                                            <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>">
                                             <input type="text" name="id_mekan" id="id_mekan" value="<?= $id_mekan; ?>" hidden>
                                             <div class="form-group row">
                                                 <label class="col-sm-2 col-form-label">Nama</label>

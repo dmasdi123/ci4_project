@@ -34,12 +34,14 @@ class masterbarang extends BaseController
             'harga_jual' => $this->request->getVar('harga_jual'),
             'id_supp' => $this->request->getVar('id_supp')
         ]);
+        session()->setFlashData('pesan', 'Data Berhasil Ditambahkan');
         return redirect()->to('/master_barang');
     }
 
     public function deletemb($idmb = null)
     {
         $this->masterbarang->delete($idmb);
+        session()->setFlashData('pesan3', 'Data Berhasil Dihapus');
         return redirect()->to('/master_barang');
     }
 
@@ -50,6 +52,7 @@ class masterbarang extends BaseController
             'mb' => $this->masterbarang->getallItems($idmb),
             'supplier' => $this->usersupplier->getDashboardSupplier()
         ];
+
         return view('/editmasterbarang', $data);
     }
 
@@ -65,6 +68,8 @@ class masterbarang extends BaseController
             'id_supp' => $this->request->getVar('id_supp')
 
         ]);
+
+        session()->setFlashData('pesan2', 'Data Berhasil Diubah');
         return redirect()->to('/master_barang');
     }
 }
