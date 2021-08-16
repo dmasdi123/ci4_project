@@ -144,6 +144,12 @@ class userController extends BaseController
         return view('user/customer.php', $data);
     }
 
+    public function showcust()
+    {
+        $id = $this->request->getVar('id'); //menerima data dari ajax
+        $result = $this->usercustomer->showCustbyId($id); //input value dari ajax ke model
+        return json_encode($result);
+    }
     public function addcustomer()
     {
         $this->usercustomer->insert([

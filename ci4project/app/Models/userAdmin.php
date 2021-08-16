@@ -19,4 +19,14 @@ class userAdmin extends Model
         }
         return $this->where(['id_user' => $iduser])->first();
     }
+
+    public function showAdmbyId($id)
+    {
+        return $this->select('*')->join('transaksi', 'transaksi.id_user = user.id_user')->where('invoice', $id)->findAll();
+    }
+
+    // public function deleteadm($iduser)
+    // {
+    //     return $this->delete('id_user', $iduser);
+    // }
 }

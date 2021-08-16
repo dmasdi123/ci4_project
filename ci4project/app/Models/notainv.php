@@ -8,6 +8,7 @@ class notainv extends Model
 {
     protected $table = 'nota';
     protected $primaryKey = 'id_nota';
+    protected $allowedFields = ['inv_nota'];
 
     public function getINV()
     {

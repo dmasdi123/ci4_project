@@ -34,6 +34,8 @@ $routes->setAutoRoute(true);
 $routes->get('/dashboard', 'dashboardUtama::dashboardutama');
 $routes->get('/transaksi/pembelian', 'transaksi::pembelian');
 $routes->get('/transaksi/service', 'transaksi::service');
+$routes->get('/print_nota', 'print_nota::invoice');
+
 $routes->get('/master_barang', 'masterbarang::index');
 $routes->get('/user/admin', 'UserController::userAdmin');
 // $routes->get('/user/admin/(:any)', 'UserController::deleteadm/$1');
@@ -47,7 +49,7 @@ $routes->get('/user/editmekanik/(:num)', 'UserController::editmekan/$1');
 $routes->get('/user/editsupplier', 'UserController::editsupplier');
 $routes->get('/user/editcustomer', 'UserController::editcustomer');
 $routes->get('/user/editmekanik', 'UserController::editmekanik');
-$routes->get('/auth/login', 'Auth::login');
+$routes->get('/', 'Auth::login');
 // $routes->get('/auth/register', 'Auth::register');
 
 

@@ -65,7 +65,7 @@
           <img src="<?= base_url(); ?>/adminlte_asset/asset/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Febrian Dimas Winaputra</a>
+          <a href="#" class="d-block"><?= session()->get('nama_user') ?></a>
         </div>
       </div>
 
@@ -140,21 +140,21 @@
                       </div>
                       <div class="col-md-4">
                         <label class="ml-1">Customer</label>
-                        <input type="number" class="form-control mb-2" id="telp" name="notelp" placeholder="Ketik nama...">
+                        <input type="number" class="form-control mb-2" id="" name="notelp" placeholder="Ketik nama...">
                         <label class="ml-1">No Telp</label>
-                        <input type="number" class="form-control mb-2" id="telp" name="notelp" placeholder="Masukan No Telp">
+                        <input type="number" class="form-control mb-2" id="" name="notelp" placeholder="Masukan No Telp">
                         <label class="ml-1">Alamat</label>
-                        <input type="text" class="form-control mb-2" id="alamat" name="alamat" placeholder="Masukan Alamat">
+                        <input type="text" class="form-control mb-2" id="" name="alamat" placeholder="Masukan Alamat">
                         <label class="ml-1">No. Pol</label>
-                        <input type="text" class="form-control mb-2" id="alamat" name="alamat" placeholder="Masukan Alamat">
+                        <input type="text" class="form-control mb-2" id="" name="alamat" placeholder="Masukan Alamat">
                       </div>
                       <div class="col-md-4">
                         <label class="ml-1">Merk</label>
-                        <input type="number" class="form-control mb-2" id="telp" name="notelp" placeholder="Ketik nama...">
+                        <input type="number" class="form-control mb-2" id="" name="notelp" placeholder="Ketik nama...">
                         <label class="ml-1">Tipe</label>
-                        <input type="number" class="form-control mb-2" id="telp" name="notelp" placeholder="Masukan No Telp">
+                        <input type="number" class="form-control mb-2" id="" name="notelp" placeholder="Masukan No Telp">
                         <label class="ml-1">K/m Datang</label>
-                        <input type="text" class="form-control mb-2" id="alamat" name="alamat" placeholder="Masukan Alamat">
+                        <input type="text" class="form-control mb-2" id="" name="alamat" placeholder="Masukan Alamat">
                         <label class="ml-1">Keluhan</label>
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                       </div>
@@ -246,19 +246,20 @@
                     <div class="row">
                       <div class="col-md-6">
                         <label class="ml-1">Invoice</label>
-                        <input type="text" class="form-control mb-2" name="invoice" value="INV/<?= date('Y'); ?>/<?= $autoinvpj; ?>" readonly>
+                        <input type="text" class="form-control mb-2" name="invoicePJ" value="INV/<?= date('Y'); ?>/<?= $autoinvpj; ?>" readonly>
                         <label class="ml-1">Kasir</label>
-                        <input type="text" class="form-control mb-2" name="invoice" value="admin (ubah kalau session aktif)" readonly>
+                        <input type="text" class="form-control mb-2" value="<?= session()->get('nama_user') ?>" readonly>
                         <label class="ml-1">Tanggal Input</label>
                         <input type="text" class="form-control mb-2" value="<?= date('d-m-Y'); ?>" disabled>
                       </div>
                       <div class="col-md-6">
                         <label class="ml-1">Customer</label>
-                        <input type="number" class="form-control mb-2" id="cust" name="cust" placeholder="Ketik nama...">
+                        <input type="text" class="form-control mb-2" id="cust" name="custpj" placeholder="Ketik nama...">
+                        <input type="text" class="form-control mb-2" id="idcust" name="idcustpj" hidden>
                         <label class="ml-1">No Telp</label>
-                        <input type="number" class="form-control mb-2" id="telp" name="notelp" placeholder="Masukan No Telp">
+                        <input type="text" class="form-control mb-2" id="telppj" name="notelppj" placeholder="Masukan No Telp">
                         <label class="ml-1">Alamat</label>
-                        <input type="text" class="form-control mb-2" id="alamat" name="alamat" placeholder="Masukan Alamat">
+                        <input type="text" class="form-control mb-2" id="alamat" name="alamatpj" placeholder="Masukan Alamat">
 
                       </div>
                     </div>
@@ -288,52 +289,50 @@
                       <div class="col-3">
                         <input type="number" class="form-control" name="harga_jualpj" placeholder="Harga" id="harga_jualpj">
                         <input type="number" class="form-control" name="id_brgpj" placeholder="Harga" id="id_brg" hidden>
-                        <input type="text" class="form-control" id="id_smpj" name="id_sm" value="<?= session()->get('id_adm') ?>" hidden>
+                        <input type="text" class="form-control" name="id_kasir" value="<?= session()->get('id_adm') ?>" hidden>
                       </div>
                     </div>
                     <div class="row mt-5 mb-5">
                       <div class="col text-center">
-                        <button class="btn btn-primary btn-lg" type="submit" id="btntambah">Tambah</button>
+                        <button class="btn btn-primary btn-lg" type="submit" id="btntambahPJ">Tambah</button>
                       </div>
                     </div>
                   </div>
                   <div class="row mx-auto">
                     <div class="col mx-auto">
-                      <table class="table" id="tbl_pj">
+                      <table class="table tbl_pj">
                         <thead>
                           <tr>
                             <th scope="col">No.</th>
                             <th scope="col">Barang</th>
                             <th scope="col">Qty</th>
                             <th scope="col">Harga (Rp.)</th>
+                            <th scope="col">Aksi</th>
                           </tr>
                         </thead>
-                        <tbody>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                          </tr>
+                        <tbody id="data_pj">
+
                         </tbody>
+                        <tfoot>
+                          <tr>
+                            <td>
+
+                            </td>
+                            <td></td>
+                            <td>
+                              <h5 style="float: right;">Grand Total (Rp) :</h5 style="float: right;">
+                            </td>
+                            <td>
+                              <h5><input type="text" id="gtotal" style="width:100%; border: none; pointer-events: none;"></h5>
+                            </td>
+                          </tr>
+                        </tfoot>
                       </table>
                     </div>
                   </div> <!-- end table pj -->
                   <div class="row mt-5 mb-5">
                     <div class="col text-center">
-                      <button class="btn btn-primary btn-lg" type="submit" id="btnpj">Checkout pj</button>
+                      <button class="btn btn-primary btn-lg" type="submit" id="btn_cekoutpj">Checkout pj</button>
                     </div>
                   </div>
                 </form>
@@ -387,6 +386,27 @@
           </div>
         </div>
         <!-- modal end -->
+        <!-- modal print -->
+        <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Cetak Nota ?</h5>
+
+              </div>
+              <div class="modal-body">
+                <div class="print" style="margin-left:27%;">
+                  <img src="/adminlte_asset/asset/img/print.gif" alt="print">
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="location.href='/transaksi/service'">Close</button>
+                <a href="/print_nota/invoice?id=INV/<?= date('Y'); ?>/<?= $autoinvpj; ?>" target="_blank"><button type="submit" class="btn btn-primary">Print</button></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end print -->
         <!-- table daftar penjualan       -->
 
       </div><!-- /.container-fluid -->
