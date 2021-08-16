@@ -410,17 +410,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         }
     </script>
     <!-- ################################################################################################################## -->
-    <!-- script untuk input pembelian -->
-    <!-- script toggle button input -->
-    <script>
-        $(".btn_buy").click(function(e) {
-            e.preventDefault();
-            // alert("oiii");
-            $(".input_buy").attr("style", "visibility: visible");
 
-        })
-    </script>
-    <!-- toggle end -->
 </body>
 
 </html>

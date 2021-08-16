@@ -29,11 +29,17 @@ class transaksi extends BaseController
 
     public function service()
     {
+        $dataservice = $this->transaksi->getAlltrxService();
+        $srv_filter = array_map("unserialize", array_unique(array_map("serialize", $dataservice))); //menghilangkan duplicate data
+        $datapj = $this->transaksi->getAlltrxPJ();
+        $pj_filter = array_map("unserialize", array_unique(array_map("serialize", $datapj))); //menghilangkan duplicate data
         $data = [
             'title' => 'Service - Bengkel Jaya Motor',
             'autoinvpj' => $this->notainv->getINV(),
             'showbarang' => $this->masterbarang->getallItems(),
-            'showmekan' => $this->mekanik->getallMekanik()
+            'showmekan' => $this->mekanik->getallMekanik(),
+            'showallservice' => $srv_filter,
+            'showallpj' => $pj_filter,
 
         ];
         return view('service.php', $data);
@@ -108,5 +114,12 @@ class transaksi extends BaseController
         $id = $this->request->getVar('id'); //data from ajax
         $result = $this->transaksi->deletelist($id);
         return json_encode($result);
+    }
+
+    public function deletelisttrx() //delete list pj
+    {
+        $id = $this->request->getVar('id');
+        $this->transaksi->deletelist2($id);
+        return redirect()->to('/transaksi/service');
     }
 }

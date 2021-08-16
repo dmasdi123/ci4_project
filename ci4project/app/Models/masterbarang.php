@@ -19,9 +19,10 @@ class masterbarang extends Model
         return $this->where(['id_barang' => $idbarang])->first();
     }
 
+
     public function tampildatamb()
     {
-        return $this->table('master_barang')->join('supplier', 'supplier.id_supp = master_barang.id_supp ')->get()->getResultArray();
+        return $this->select('*')->join('supplier', 'supplier.id_supp = master_barang.id_supp ')->findAll();
     }
 
 
