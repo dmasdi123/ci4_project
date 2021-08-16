@@ -193,11 +193,11 @@
                 </div>
               <?php elseif (session()->getFlashData('pesan2')) :  ?>
                 <div class="alert alert-success" role="alert">
-                  <?= session()->getFlashData('pesan'); ?>
+                  <?= session()->getFlashData('pesan2'); ?>
                 </div>
               <?php elseif (session()->getFlashData('pesan3')) :  ?>
                 <div class="alert alert-success" role="alert">
-                  <?= session()->getFlashData('pesan'); ?>
+                  <?= session()->getFlashData('pesan3'); ?>
                 </div>
               <?php endif; ?>
               <!-- /.card-header -->

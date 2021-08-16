@@ -30,8 +30,9 @@ class userController extends BaseController
 
     public function userAdmin()
     {
-        // $getidser = $this->request->getVar('')
-        // $admin = $this->useradmin->getDashboardAdmin();
+        if (session()->get('username', 'password') == null) {
+            return redirect()->to('/');
+        }
         $data = [
             'title' => 'Data Admin - Bengkel Jaya Motor',
             'admin' => $this->useradmin->getDashboardAdmin()
@@ -64,6 +65,9 @@ class userController extends BaseController
 
     public function editadmin($iduser)
     {
+        if (session()->get('username', 'password') == null) {
+            return redirect()->to('/');
+        }
         $data = [
             'title' => 'Form Edit Admin',
             'admin' => $this->useradmin->getDashboardAdmin($iduser)
@@ -92,6 +96,9 @@ class userController extends BaseController
     // controller untuk supplier start ------------------------------------------------------------------
     public function userSupplier()
     {
+        if (session()->get('username', 'password') == null) {
+            return redirect()->to('/');
+        }
         $data = [
             'title' => 'Data Supplier - Bengkel Jaya Motor',
             'supplier' => $this->usersupplier->getDashboardSupplier(),
@@ -122,6 +129,9 @@ class userController extends BaseController
 
     public function editsupp($idsupp)
     {
+        if (session()->get('username', 'password') == null) {
+            return redirect()->to('/');
+        }
         $data = [
             'title' => 'Form Edit Admin',
             'supplier' => $this->usersupplier->getDashboardSupplier($idsupp)
@@ -146,6 +156,9 @@ class userController extends BaseController
     // controller untuk customer start ------------------------------------------------------------------
     public function userCustomer()
     {
+        if (session()->get('username', 'password') == null) {
+            return redirect()->to('/');
+        }
         $data = [
             'title' => 'Data Customer - Bengkel Jaya Motor',
             'customer' => $this->usercustomer->getDashboardCustomer()
@@ -184,6 +197,9 @@ class userController extends BaseController
 
     public function editcust($idcust)
     {
+        if (session()->get('username', 'password') == null) {
+            return redirect()->to('/');
+        }
         $data = [
             'title' => 'Form Edit Customer',
             'customer' => $this->usercustomer->getDashboardCustomer($idcust)
@@ -212,6 +228,9 @@ class userController extends BaseController
     // controller untuk mekanik start ------------------------------------------------------------------
     public function userMekanik()
     {
+        if (session()->get('username', 'password') == null) {
+            return redirect()->to('/');
+        }
         $data = [
             'title' => 'Data Mekanik - Bengkel Jaya Motor',
             'mekanik' => $this->usermekanik->getDashboardMekanik(),
@@ -242,6 +261,9 @@ class userController extends BaseController
 
     public function editmekan($idmekan)
     {
+        if (session()->get('username', 'password') == null) {
+            return redirect()->to('/');
+        }
         $data = [
             'title' => 'Form Edit Mekanik',
             'mekanik' => $this->usermekanik->getDashboardMekanik($idmekan)

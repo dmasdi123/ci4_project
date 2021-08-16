@@ -16,6 +16,9 @@ class masterbarang extends BaseController
 
     public function index()
     {
+        if (session()->get('username', 'password') == null) {
+            return redirect()->to('/');
+        }
         $data = [
             'title' => 'Master Barang - Bengkel Jaya Motor',
             'master_barang' => $this->masterbarang->tampildatamb(),
@@ -47,6 +50,9 @@ class masterbarang extends BaseController
 
     public function editmb($idmb)
     {
+        if (session()->get('username', 'password') == null) {
+            return redirect()->to('/');
+        }
         $data = [
             'title' => 'Form Edit Master Barang',
             'mb' => $this->masterbarang->getallItems($idmb),
