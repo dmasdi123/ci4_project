@@ -65,7 +65,7 @@
                     <img src="<?= base_url(); ?>/adminlte_asset/asset/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">Febrian Dimas Winaputra</a>
+                    <a href="#" class="d-block"><?= session()->get('nama_user'); ?></a>
                 </div>
             </div>
 
@@ -135,7 +135,7 @@
                                                 <td><?= $cus['tipe']; ?></td>
                                                 <td>
                                                     <a href="<?= base_url(); ?>/UserController/editcust/<?= $cus['id_cus']; ?>"><button type="button" class="btn btn-warning"><i class="fas fa-edit"></i></button></a>
-                                                    <a href="<?= base_url(); ?>/userController/deletecus/<?= $cus['id_cus']; ?>"><button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button></a>
+                                                    <a href="<?= base_url(); ?>/userController/deletecus/<?= $cus['id_cus']; ?>"><button type="button" class="btn btn-danger" onclick="return confirm('Apakah anda yakin menghapus data ini?')"><i class="far fa-trash-alt"></i></button></a>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>

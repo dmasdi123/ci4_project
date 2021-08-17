@@ -65,7 +65,7 @@
           <img src="<?= base_url(); ?>/adminlte_asset/asset/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Febrian Dimas Winaputra</a>
+          <a href="#" class="d-block"><?= session()->get('nama_user'); ?></a>
         </div>
       </div>
 
@@ -233,13 +233,13 @@
                           <select class="custom-select" id="id_supp" name="id_supp">
                             <option selected disabled>Nama Supplier</option>
                             <?php foreach ($supplier as $supp) : ?>
-                              <option id="id_supp" name="id_supp" value="<?= $supp['id_supp']; ?>"><?= $supp['id_supp']; ?></option>
+                              <option id="id_supp" name="id_supp" value="<?= $supp['id_supp']; ?>"><?= $supp['nama_supp']; ?></option>
                             <?php endforeach; ?>
                           </select>
                         </div>
                       </div>
                       <div class="justify-content-center">
-                        <button type="submit" class="btn btn-success btn-block" data-toggle="modal" data-target="#exampleModal" style="text-align: center;"> Tambahkan Mekanik <i class="fas fa-plus-square ml-1"></i></button>
+                        <button type="submit" class="btn btn-success btn-block" data-toggle="modal" data-target="#exampleModal" style="text-align: center;"> Tambahkan Master Barang <i class="fas fa-plus-square ml-1"></i></button>
                       </div>
                     </form>
                   </div>

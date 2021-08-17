@@ -157,7 +157,7 @@
                                                 </div>
                                             </div>
                                             <div class="justify-content-center">
-                                                <button type="submit" class="btn btn-success btn-block" data-toggle="modal" data-target="#exampleModal" style="text-align: center;"> Tambahkan Mekanik <i class="fas fa-plus-square ml-1"></i></button>
+                                                <button type="submit" class="btn btn-success btn-block" data-toggle="modal" data-target="#exampleModal" style="text-align: center;">Simpan <i class="fas fa-plus-square ml-1"></i></button>
                                             </div>
                                         </form>
                                     </div>
