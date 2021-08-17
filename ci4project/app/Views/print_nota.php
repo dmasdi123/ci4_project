@@ -22,7 +22,7 @@
                 <td width="30%">
                     <h6>Nota Penjualan & Service</h6>
                 </td>
-                <td></td>
+                <td> </td>
             </tr>
 
         </table>
@@ -31,11 +31,33 @@
                 <?php foreach ($cust as $cst) :
                     $nama = $cst['nama_cus'];
                     $hp = $cst['telp'];
-                    $alamat = $cst['alamat_cus']; ?>
+                    $alamat = $cst['alamat_cus'];
+                    $nopol = $cst['no_pol'];
+                    $merk = $cst['merk'];
+                    $tipe = $cst['tipe']; ?>
+
                 <?php endforeach; ?>
-                <td>Customer: <?= $nama; ?></td>
-                <td>Hp: <?= $hp; ?></td>
-                <td>Alamat: <?= $alamat; ?></td>
+                <?php foreach ($detail as $d) :
+                    $inv = $d['invoice'];
+                    $keluhan = $d['keluhan'];
+                ?>
+
+                <?php endforeach; ?>
+                <td>Invoice: <?= $inv; ?><br>
+                    Customer: <?= $nama; ?><br>
+                    Hp: <?= $hp; ?><br>
+                    Alamat: <?= $alamat; ?><br>
+
+                </td>
+                <td>
+                    Detail Kendaraan :<br>
+                    No.Pol: <?= $nopol; ?><br>
+                    Merk: <?= $merk; ?><br>
+                    Tipe: <?= $tipe; ?><br>
+                </td>
+            </tr>
+            <tr>
+                <td>Keluhan: <?= $keluhan; ?></td>
             </tr>
 
         </table>

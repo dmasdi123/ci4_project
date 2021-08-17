@@ -134,3 +134,96 @@
     </div>
 </div>
 <!-- end print -->
+
+<!-- modal daftar trx -->
+<div class="modal fade" id="DaftarTransaksi" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLongTitle">Daftar Transaksi</h3>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col">
+                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-service" role="tab" aria-controls="pills-service" aria-selected="true">Service</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-prenjualan" role="tab" aria-controls="pills-prenjualan" aria-selected="false">Penjualan</a>
+                            </li>
+
+                        </ul>
+
+                        <div class="tab-content" id="pills-tabContent">
+                            <!-- content daftar service -->
+                            <div class="tab-pane fade show active" id="pills-service" role="tabpanel" aria-labelledby="pills-home-tab">
+
+                                <table class="table table-bordered table-responsive-sm" id="tbl-barang">
+                                    <thead class="thead-dark text-center">
+                                        <tr>
+                                            <th scope="col">Invoice</th>
+                                            <!-- <th scope="col">Mekanik</th> -->
+                                            <th scope="col">Customer</th>
+                                            <th scope="col">Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="show-brg-data">
+                                        <?php foreach ($showallservice as $srv) : ?>
+                                            <tr>
+
+                                                <td class="text-center"><?= $srv['invoice']; ?></td>
+
+                                                <td class="text-center"><?= $srv['nama_cus']; ?></td>
+                                                <td class="text-center">
+                                                    <a href="/print_nota/service?id=<?= $srv['invoice']; ?>" target="_blank"><button class="btn btn-warning"><i class="fas fa-info-circle"></i></button></a>
+                                                    <a href="/transaksi/deletelisttrx?id=<?= $srv['invoice']; ?>"><button class="btn btn-danger" type="button" onclick="return confirm('Yakin data akan dihapus?')"><i class=" fas fa-trash"></i></button>
+                                                </td>
+
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            <!-- end tab service -->
+
+                            <div class="tab-pane fade" id="pills-prenjualan" role="tabpanel" aria-labelledby="pills-profile-tab">
+                                <!-- content daftar penjualan -->
+                                <table class="table table-bordered table-responsive-sm">
+                                    <thead class="thead-dark text-center">
+                                        <tr>
+                                            <th scope="col">Invoice</th>
+                                            <th scope="col">Customer</th>
+                                            <th scope="col">Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="show-brg-data">
+                                        <?php foreach ($showallpj as $pj) : ?>
+                                            <tr>
+
+                                                <td class="text-center"><?= $pj['invoice']; ?></td>
+                                                <td class="text-center"><?= $pj['nama_cus']; ?></td>
+                                                <td class="text-center">
+                                                    <a href="/print_nota/invoice?id=<?= $pj['invoice']; ?>" target="_blank"><button class="btn btn-warning"><i class="fas fa-info-circle"></i></button></a>
+                                                    <a href="/transaksi/deletelisttrx?id=<?= $pj['invoice']; ?>"><button class="btn btn-danger" type="button" onclick="return confirm('Yakin data akan dihapus?')"><i class=" fas fa-trash"></i></button>
+                                                </td>
+
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                                <!-- end -->
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning" data-dismiss="modal" onclick="redirect();">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- modal end -->

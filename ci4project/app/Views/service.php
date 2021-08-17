@@ -103,7 +103,7 @@
           <div class="col mx-auto">
             <div class="card card-primary">
               <div class="card-header">
-                <button class="btn btn-dark" data-toggle="modal" data-target="#ModaldaftarTransaksi" style="float: right;">Daftar transaksi</button>
+                <button class="btn btn-dark" data-toggle="modal" data-target="#DaftarTransaksi" style="float: right;">Daftar transaksi</button>
                 <h1 class="card-title" style="font-size: 160%;">Transaksi</h1>
               </div>
               <div class="card-body">
