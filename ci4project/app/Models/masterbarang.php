@@ -22,7 +22,7 @@ class masterbarang extends Model
 
     public function tampildatamb()
     {
-        return $this->select('*')->join('supplier', 'supplier.id_supp = master_barang.id_supp ')->findAll();
+        return $this->select('*')->join('supplier', 'supplier.id_supp = master_barang.id_supp ')->get()->getResultArray();
     }
 
 

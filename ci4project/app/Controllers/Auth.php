@@ -19,7 +19,7 @@ class Auth extends BaseController
         $data = [
             'title' => 'Halaman Login',
         ];
-        return view('auth/login');
+        return view('auth/login', $data);
     }
 
     public function do_login()

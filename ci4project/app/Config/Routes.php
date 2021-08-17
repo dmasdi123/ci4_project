@@ -38,6 +38,7 @@ $routes->get('/print_nota', 'print_nota::invoice');
 $routes->get('/print_nota', 'print_nota::service');
 
 $routes->get('/master_barang', 'masterbarang::index');
+$routes->get('/editmasterbarang(:num)', 'masterbarang::editmb/$1');
 $routes->get('/user/admin', 'UserController::userAdmin');
 // $routes->get('/user/admin/(:any)', 'UserController::deleteadm/$1');
 $routes->get('/user/supplier', 'UserController::userSupplier');
